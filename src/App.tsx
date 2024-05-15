@@ -1,5 +1,7 @@
+import { Button } from '@/components/ui/button'
+
 function App() {
-	return <main>Admin App</main>
+	return <Button>Admin App</Button>
 }
 
 export default App
