@@ -26,6 +26,8 @@ export type TSubField = {
 	name: string
 	size: number
 	defaultPrice?: number
+	createdAt: string
+	updatedAt: string
 }
 
 export type TFootballField = {
@@ -36,7 +38,9 @@ export type TFootballField = {
 	closedAt: string
 	images: string[]
 	location: TLocation
-	subfield: TSubField[]
+	subfields: TSubField[]
+	createdAt: string
+	updatedAt: string
 }
 
 export type TBookingStatus = 'confirmed' | 'canceled' | 'pending'
