@@ -3,9 +3,9 @@ import { MainNav } from './MainNav'
 
 const DashboardHeader = () => {
 	return (
-		<header className="flex items-center justify-between border-b p-2">
+		<header className="flex flex-wrap items-center justify-between gap-4 border-b p-2">
 			<MainNav />
-			<Input placeholder="Search..." className="max-w-80" />
+			<Input placeholder="Search..." className="min-w-32 max-w-80" />
 		</header>
 	)
 }
