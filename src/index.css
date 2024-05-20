@@ -56,6 +56,9 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+	a.active {
+		@apply text-primary;
+	}
 	h1 {
 		@apply text-4xl font-extrabold leading-normal tracking-wide md:text-5xl;
 	}
