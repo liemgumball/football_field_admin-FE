@@ -21,10 +21,12 @@ const Home = () => {
 
 	if (isLoading) return <Icons.Loader size={80} className="container my-16" />
 
-	if (isError) return <p className="text-destructive"> {error.message} </p>
-
-	if (!field) return <p className="text-muted-foreground">Field not found.</p>
-	console.log(field)
+	if (isError || !field)
+		return (
+			<p className="pt-4 text-center font-semibold text-destructive">
+				{error?.message || 'Field not found.'}
+			</p>
+		)
 
 	return (
 		<div className="space-y-4 py-8">
