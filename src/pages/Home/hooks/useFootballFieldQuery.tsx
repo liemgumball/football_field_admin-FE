@@ -10,6 +10,7 @@ const useFootballFieldQuery = () => {
 	return useQuery({
 		queryKey: ['football-field', admin._id],
 		queryFn: () => getFootballField(admin._id),
+		staleTime: 10 * 1000,
 	})
 }
 

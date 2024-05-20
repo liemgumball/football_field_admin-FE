@@ -2,6 +2,7 @@ import useFootballFieldQuery from './hooks/useFootballFieldQuery'
 import { Icons } from '@/components/Icons'
 import FootballFieldHeader from './components/FootballFieldHeader'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import OverviewTab from './tabs/OverviewTab'
 
 const Home = () => {
 	const {
@@ -11,6 +12,7 @@ const Home = () => {
 		isError,
 		error,
 		isFetching,
+		isStale,
 	} = useFootballFieldQuery()
 
 	if (isLoading) return <Icons.Loader size={80} className="container my-16" />
@@ -21,6 +23,7 @@ const Home = () => {
 		<div className="space-y-4 py-8">
 			<FootballFieldHeader
 				isFetching={isFetching}
+				isStale={isStale}
 				refetch={refetch}
 				{...field}
 			/>
@@ -36,7 +39,7 @@ const Home = () => {
 					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="overview">
-					<p>{JSON.stringify(field)}</p>
+					<OverviewTab />
 				</TabsContent>
 			</Tabs>
 		</div>
