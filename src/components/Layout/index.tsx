@@ -5,7 +5,9 @@ const Layout = () => {
 	return (
 		<div className="relative min-h-screen w-full">
 			<Header />
-			<Outlet />
+			<main className="container flex flex-col items-center justify-center">
+				<Outlet />
+			</main>
 		</div>
 	)
 }
