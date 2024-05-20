@@ -1,10 +1,10 @@
-import { TUSer } from '@/types'
+import { TUser } from '@/types'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 type TAuthState = {
-	user: TUSer | null
-	set: (user: TUSer) => void
+	user: TUser | null
+	set: (user: TUser) => void
 
 	remove: () => void
 }

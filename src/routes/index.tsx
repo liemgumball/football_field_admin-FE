@@ -7,10 +7,11 @@ import PrivateRoute from './PrivateRoute'
 import Login from '@/pages/Login'
 import NotFound from '@/pages/NotFound'
 import Home from '@/pages/Home'
+import Layout from '@/components/Layout'
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route>
+		<Route element={<Layout />}>
 			<Route path="/login" element={<Login />} />
 			<Route path="*" element={<NotFound />} />
 			<Route path="/" element={<PrivateRoute />}>
