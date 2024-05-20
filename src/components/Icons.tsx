@@ -1,4 +1,4 @@
-import { CheckIcon, Loader2Icon } from 'lucide-react'
+import { CheckIcon, Loader2Icon, RefreshCwIcon } from 'lucide-react'
 import logo from '/football-icon.svg'
 import { cn } from '@/lib/utils'
 
@@ -21,6 +21,21 @@ export const Icons = {
 		<Loader2Icon
 			className={cn('animate-spin text-muted-foreground', className)}
 			size={size}
+		/>
+	),
+
+	Refresh: ({
+		size = 18,
+		className,
+		isFetching,
+	}: {
+		size?: number
+		className?: string
+		isFetching?: boolean
+	}) => (
+		<RefreshCwIcon
+			size={size}
+			className={cn(isFetching ? 'animate-spin' : '', className)}
 		/>
 	),
 

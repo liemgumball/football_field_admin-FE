@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Icons } from '../Icons'
 import ThemeToggle from '../ThemeToggle'
+import LogoutButton from '../LogoutButton'
 
 const Header = () => {
 	return (
@@ -9,7 +10,10 @@ const Header = () => {
 				<Icons.Logo />
 			</Link>
 
-			<ThemeToggle />
+			<div className="flex items-center gap-2">
+				<ThemeToggle />
+				<LogoutButton />
+			</div>
 		</header>
 	)
 }
