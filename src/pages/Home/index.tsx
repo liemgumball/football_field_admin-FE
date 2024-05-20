@@ -1,8 +1,12 @@
+import { Suspense, lazy } from 'react'
 import useFootballFieldQuery from './hooks/useFootballFieldQuery'
+
 import { Icons } from '@/components/Icons'
-import FootballFieldHeader from './components/FootballFieldHeader'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import OverviewTab from './tabs/OverviewTab'
+import FootballFieldHeader from './components/FootballFieldHeader'
+
+const OverviewTab = lazy(() => import('./tabs/OverviewTab'))
+const SubfieldsTab = lazy(() => import('./tabs/SubfieldsTab'))
 
 const Home = () => {
 	const {
@@ -19,6 +23,9 @@ const Home = () => {
 
 	if (isError) return <p className="text-destructive"> {error.message} </p>
 
+	if (!field) return <p className="text-muted-foreground">Field not found.</p>
+	console.log(field)
+
 	return (
 		<div className="space-y-4 py-8">
 			<FootballFieldHeader
@@ -30,7 +37,7 @@ const Home = () => {
 			<Tabs defaultValue="overview" className="space-y-4">
 				<TabsList>
 					<TabsTrigger value="overview">Overview</TabsTrigger>
-					<TabsTrigger value="analytics">Analytics</TabsTrigger>
+					<TabsTrigger value="subfields">Subfields</TabsTrigger>
 					<TabsTrigger value="reports" disabled>
 						Reviews
 					</TabsTrigger>
@@ -38,9 +45,17 @@ const Home = () => {
 						Notifications
 					</TabsTrigger>
 				</TabsList>
-				<TabsContent value="overview">
-					<OverviewTab />
-				</TabsContent>
+
+				<Suspense
+					fallback={<Icons.Loader size={60} className="container my-16" />}
+				>
+					<TabsContent value="overview">
+						<OverviewTab />
+					</TabsContent>
+					<TabsContent value="subfields">
+						<SubfieldsTab subfields={field.subfields} />
+					</TabsContent>
+				</Suspense>
 			</Tabs>
 		</div>
 	)
