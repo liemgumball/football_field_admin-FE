@@ -1,4 +1,4 @@
-export type TUSer = {
+export type TUser = {
 	_id: string
 	accessToken: string
 	refreshToken: string
