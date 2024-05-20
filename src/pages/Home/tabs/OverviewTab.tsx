@@ -6,10 +6,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { TFootballField } from '@/types'
 import {
 	ActivityIcon,
 	DollarSignIcon,
+	PieChartIcon,
 	Users2Icon,
 	WalletIcon,
 } from 'lucide-react'
@@ -17,8 +17,7 @@ import { Link } from 'react-router-dom'
 import Overview from '../components/Overview'
 import RecentSales from '../components/RecentSales'
 
-const OverviewTab = (props: Partial<TFootballField>) => {
-	console.log(props)
+const OverviewTab = () => {
 	return (
 		<div className="space-y-2">
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -59,7 +58,7 @@ const OverviewTab = (props: Partial<TFootballField>) => {
 						<CardTitle className="text-sm font-medium">Filled</CardTitle>
 						<Button variant="ghost" size="icon" asChild>
 							<Link to="">
-								<WalletIcon size={16} className="text-muted-foreground" />
+								<PieChartIcon size={16} className="text-muted-foreground" />
 							</Link>
 						</Button>
 					</CardHeader>
@@ -97,9 +96,16 @@ const OverviewTab = (props: Partial<TFootballField>) => {
 					</CardContent>
 				</Card>
 				<Card className="lg:col-span-3">
-					<CardHeader>
-						<CardTitle>Recent Sales</CardTitle>
-						<CardDescription>You made 265 sales this month.</CardDescription>
+					<CardHeader className="flex flex-row items-center justify-between">
+						<div className="space-y-2">
+							<CardTitle>Recent Sales</CardTitle>
+							<CardDescription>You made 265 sales this month.</CardDescription>
+						</div>
+						<Button variant="ghost" size="icon" asChild>
+							<Link to="">
+								<WalletIcon size={16} className="text-muted-foreground" />
+							</Link>
+						</Button>
 					</CardHeader>
 					<CardContent>
 						<RecentSales />

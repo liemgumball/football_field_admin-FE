@@ -53,7 +53,7 @@ const data = [
 
 const Overview = () => {
 	return (
-		<ResponsiveContainer width="100%" height={350}>
+		<ResponsiveContainer width="100%" height={360}>
 			<BarChart data={data}>
 				<XAxis
 					dataKey="name"
@@ -67,7 +67,7 @@ const Overview = () => {
 					fontSize={12}
 					tickLine={false}
 					axisLine={false}
-					tickFormatter={(value) => `${value} VND`}
+					tickFormatter={(value) => `${value}`}
 				/>
 				<Bar
 					dataKey="total"
