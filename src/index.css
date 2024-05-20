@@ -56,4 +56,10 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+	h1 {
+		@apply text-4xl font-extrabold leading-normal tracking-wide md:text-5xl;
+	}
+	h2 {
+		@apply text-3xl font-bold leading-normal tracking-normal md:text-4xl;
+	}
 }
