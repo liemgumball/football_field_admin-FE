@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute'
 import Layout from '@/components/Layout'
 import { lazy } from 'react'
 import { PATHS } from '@/constants/navigation'
+import RouteError from './RouteError'
 
 const Login = lazy(() => import('@/pages/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
@@ -19,7 +20,11 @@ const router = createBrowserRouter(
 		<Route element={<Layout />}>
 			<Route path={PATHS.LOGIN} element={<Login />} />
 			<Route element={<PrivateRoute />}>
-				<Route path={PATHS.DASHBOARD} element={<Dashboard />}>
+				<Route
+					path={PATHS.DASHBOARD}
+					element={<Dashboard />}
+					errorElement={<RouteError />}
+				>
 					<Route path="*" element={<NotFound />} />
 					<Route index element={<Home />} />
 					<Route path={PATHS.DAY_OF_SERVICES} element={<DayOfServices />} />

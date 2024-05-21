@@ -18,15 +18,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
 const DayOfServicesForm = () => {
+	const [, setSearchParams] = useSearchParams()
 	const formSchema = z.object({
 		date: z.date(),
-		size: z
-			.enum(['5', '6', '7', '11', 'undefined'])
-			.transform((val) => (val === 'undefined' ? undefined : val))
-			.optional(),
 	})
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -39,11 +37,12 @@ const DayOfServicesForm = () => {
 	const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (values) => {
 		const searchParams = new URLSearchParams()
 		searchParams.set('date', formatDate(values.date))
+		setSearchParams(searchParams)
 	}
 
 	return (
 		<Form {...form}>
-			<form onChange={form.handleSubmit(onSubmit)}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-4">
 				<FormField
 					control={form.control}
 					name="date"
@@ -82,6 +81,13 @@ const DayOfServicesForm = () => {
 						</FormItem>
 					)}
 				/>
+				<Button
+					className="inline"
+					type="submit"
+					disabled={!form.formState.isDirty}
+				>
+					Check
+				</Button>
 			</form>
 		</Form>
 	)
