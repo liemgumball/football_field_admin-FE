@@ -2,15 +2,24 @@ import { TFootballField } from '@/types'
 import { create } from 'zustand'
 
 type TFootballFieldState = {
-	field: TFootballField | null
+	field: TFootballField | undefined
+	isStale: boolean
+	isFetching: boolean
 
-	set: (field: TFootballField) => void
+	refetch: (() => void) | undefined
 }
 
-const useFootballFieldStore = create<TFootballFieldState>()((set) => ({
-	field: null,
+type TTStore = TFootballFieldState & {
+	set: (props: Partial<TFootballFieldState>) => void
+}
 
-	set: (field) => set({ field: field }),
+const useFootballFieldStore = create<TTStore>()((set) => ({
+	field: undefined,
+	isStale: true,
+	isFetching: false,
+
+	set: (props) => set({ ...props }),
+	refetch: undefined,
 }))
 
 export default useFootballFieldStore
