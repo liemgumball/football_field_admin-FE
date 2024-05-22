@@ -44,7 +44,7 @@ const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
 			</li>
 		)
 
-	if (status === 'available')
+	if (status !== 'progressing')
 		return (
 			<Popover>
 				<PopoverTrigger className="w-full">{item}</PopoverTrigger>

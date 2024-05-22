@@ -8,6 +8,7 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
+	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
@@ -15,15 +16,19 @@ import { Switch } from '@/components/ui/switch'
 import { updateDayOfServices } from '@/services/day-of-services'
 import useFootballFieldStore from '@/stores/football-field'
 import { toast } from '@/components/ui/use-toast'
-import { useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { TTimeStep } from '@/types'
 
 const formSchema = z.object({
-	price: z
-		.string()
-		.transform((i) => Number(i))
-		.pipe(z.number().int().min(0)),
-	available: z.boolean(),
+	at: z.string(),
+	price: z.union([
+		z.number().int().min(0),
+		z
+			.string()
+			.transform((i) => Number(i))
+			.refine((i) => i > 0 && Number.isInteger(i)),
+	]),
+	status: z.enum(['available', 'used']),
 })
 
 const TurnOfServiceForm = (props: {
@@ -41,24 +46,24 @@ const TurnOfServiceForm = (props: {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
+			at: at,
 			price: price,
-			available: status === 'available',
+			status: status,
 		},
+	})
+
+	const { mutateAsync } = useMutation({
+		mutationFn: (data: z.infer<typeof formSchema>) =>
+			updateDayOfServices(_id, field._id, { turnOfServices: [data] }),
+		onSettled: () =>
+			queryClient.invalidateQueries({ queryKey: ['day-of-services'] }),
 	})
 
 	const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (
 		values,
 	) => {
 		try {
-			await updateDayOfServices(_id, field._id, {
-				turnOfServices: [
-					{
-						price: values.price,
-						at,
-						status: values.available ? 'available' : 'used',
-					},
-				],
-			})
+			await mutateAsync(values)
 
 			// Successfully
 			toast({
@@ -69,8 +74,6 @@ const TurnOfServiceForm = (props: {
 				title: 'Failed to update turn of service',
 				variant: 'destructive',
 			})
-		} finally {
-			queryClient.invalidateQueries({ queryKey: ['day-of-services'] })
 		}
 	}
 
@@ -79,14 +82,16 @@ const TurnOfServiceForm = (props: {
 			<form className="space-y-2" onSubmit={form.handleSubmit(onSubmit)}>
 				<FormField
 					control={form.control}
-					name="available"
+					name="status"
 					render={({ field }) => (
-						<FormItem className="flex items-center justify-between gap-2 ">
-							<FormLabel>{field.value ? 'Available' : 'Used'}</FormLabel>
+						<FormItem className="flex items-center justify-between gap-2 capitalize">
+							<FormLabel>{field.value}</FormLabel>
 							<FormControl>
 								<Switch
-									checked={field.value}
-									onCheckedChange={field.onChange}
+									checked={field.value === 'available'}
+									onCheckedChange={(e) =>
+										field.onChange(e ? 'available' : 'used')
+									}
 								/>
 							</FormControl>
 						</FormItem>
@@ -96,18 +101,21 @@ const TurnOfServiceForm = (props: {
 					control={form.control}
 					name="price"
 					render={({ field }) => (
-						<FormItem className="flex items-center justify-between gap-2 ">
-							<FormLabel>Price</FormLabel>
-							<div className="flex items-center gap-2">
-								<FormControl>
-									<Input
-										{...field}
-										type="number"
-										className="h-8 w-24 text-sm"
-									/>
-								</FormControl>
-								<p>VND</p>
+						<FormItem>
+							<div className="flex items-center justify-between gap-1">
+								<FormLabel>Price</FormLabel>
+								<div className="flex items-center gap-2">
+									<FormControl>
+										<Input
+											{...field}
+											type="number"
+											className="h-8 w-24 text-sm"
+										/>
+									</FormControl>
+									<span>VND</span>
+								</div>
 							</div>
+							<FormMessage className="text-end" />
 						</FormItem>
 					)}
 				/>
@@ -116,9 +124,7 @@ const TurnOfServiceForm = (props: {
 					className="container"
 					size="sm"
 					type="submit"
-					disabled={
-						!form.formState.isDirty || form.formState.isSubmitSuccessful
-					}
+					disabled={!form.formState.isDirty || form.formState.isSubmitting}
 				>
 					Save
 				</Button>
