@@ -12,9 +12,10 @@ import {
 import { CheckIcon, MinusCircleIcon } from 'lucide-react'
 import useBookingMutation from '../hooks/useBookingMutation'
 import { toast } from '@/components/ui/use-toast'
+import { Icons } from '@/components/Icons'
 
 const BookingResponse = ({ _id }: { _id: string }) => {
-	const { mutateAsync } = useBookingMutation(_id)
+	const { mutateAsync, isPending } = useBookingMutation(_id)
 
 	const onConfirm = async () => {
 		try {
@@ -71,7 +72,10 @@ const BookingResponse = ({ _id }: { _id: string }) => {
 						<Button variant="outline" asChild>
 							<DialogClose>Cancel</DialogClose>
 						</Button>
-						<Button onClick={onConfirm}>Confirm</Button>
+						<Button onClick={onConfirm}>
+							{isPending && <Icons.Loader className="mr-1" />}
+							Confirm
+						</Button>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
@@ -97,6 +101,7 @@ const BookingResponse = ({ _id }: { _id: string }) => {
 							<DialogClose>Cancel</DialogClose>
 						</Button>
 						<Button variant="destructive" onClick={onRefuse}>
+							{isPending && <Icons.Loader className="mr-1" />}
 							Refuse
 						</Button>
 					</DialogFooter>
