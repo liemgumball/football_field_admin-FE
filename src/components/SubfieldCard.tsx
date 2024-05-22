@@ -16,7 +16,7 @@ const SubfieldCard = (props: TSubField) => {
 	const { _id, name, size, defaultPrice, updatedAt } = props
 
 	return (
-		<Link to={`subfield/${_id}`} className="w-full">
+		<Link to={`subfields/${_id}`} className="w-full">
 			<Card className="transition-colors hover:bg-muted/80">
 				<CardHeader>
 					<CardTitle className="flex justify-between">
