@@ -42,6 +42,7 @@ const DataTable = <TData, TValue>({ columns, data }: TProps<TData, TValue>) => {
 	const table = useReactTable({
 		data,
 		columns,
+		initialState: { columnVisibility: { _id: false } },
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 		onSortingChange: setSorting,
