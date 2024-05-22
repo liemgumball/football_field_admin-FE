@@ -56,7 +56,7 @@ export type TTurnOfService = {
 
 export type TFootballFieldSize = '5' | '6' | '7' | '11'
 
-export type TDayOfService = {
+export type TDayOfServices = {
 	_id: string
 	fieldId: string
 	field?: TFootballField

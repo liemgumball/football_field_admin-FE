@@ -1,6 +1,6 @@
 import { QueryObserverResult } from '@tanstack/react-query'
 import SubfieldServiceSkeleton from './SubfieldServiceSkeleton'
-import { TDayOfService } from '@/types'
+import { TDayOfServices } from '@/types'
 import { User2Icon } from 'lucide-react'
 import { format } from 'date-fns'
 import {
@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator'
 import TurnOfServiceItem from './TurnOfServiceItem'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
-type TProps = QueryObserverResult<TDayOfService[]>
+type TProps = QueryObserverResult<TDayOfServices[]>
 
 // TODO css
 const SubfieldServicesItem = (props: TProps) => {
@@ -30,7 +30,7 @@ const SubfieldServicesItem = (props: TProps) => {
 	if (!data?.length)
 		return <p className="text-muted-foreground">Data not found.</p>
 
-	const { subfield, date, turnOfServices } = data[0]
+	const { subfield, date, turnOfServices, _id } = data[0]
 
 	return (
 		<Card className="space-y-2 overflow-hidden rounded-md border p-2">
@@ -51,7 +51,7 @@ const SubfieldServicesItem = (props: TProps) => {
 				<ScrollArea className="pr-4">
 					<ul className="max-h-96 space-y-2">
 						{turnOfServices.map((turn) => (
-							<TurnOfServiceItem key={turn.at} {...turn} />
+							<TurnOfServiceItem key={turn.at} _id={_id} {...turn} />
 						))}
 					</ul>
 				</ScrollArea>

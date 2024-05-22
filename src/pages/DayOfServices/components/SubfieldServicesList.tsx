@@ -2,7 +2,7 @@ import useFootballFieldStore from '@/stores/football-field'
 import useDayOfServicesQueries from '../hooks/DayOfServicesQuery'
 import SubfieldServicesItem from './SubfieldServicesItem'
 import { QueryObserverResult } from '@tanstack/react-query'
-import { TDayOfService } from '@/types'
+import { TDayOfServices } from '@/types'
 
 const SubfieldServicesList = () => {
 	const field = useFootballFieldStore((state) => state.field)
@@ -11,7 +11,7 @@ const SubfieldServicesList = () => {
 
 	const queries = useDayOfServicesQueries(
 		field.subfieldIds,
-	) as QueryObserverResult<TDayOfService[]>[]
+	) as QueryObserverResult<TDayOfServices[]>[]
 
 	if (!queries.length)
 		return <p className="text-muted-foreground">Not services data to show.</p>

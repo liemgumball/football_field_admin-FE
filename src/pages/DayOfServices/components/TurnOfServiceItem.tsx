@@ -8,8 +8,8 @@ import {
 } from '@/components/ui/popover'
 import TurnOfServiceForm from './TurnOfServiceForm'
 
-const TurnOfServiceItem = (props: TTurnOfService) => {
-	const { at, price, status } = props
+const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
+	const { at, price, status, _id } = props
 
 	const content = (
 		<>
@@ -49,7 +49,7 @@ const TurnOfServiceItem = (props: TTurnOfService) => {
 			<Popover>
 				<PopoverTrigger className="w-full">{item}</PopoverTrigger>
 				<PopoverContent>
-					<TurnOfServiceForm price={price} status={status} />
+					<TurnOfServiceForm _id={_id} price={price} status={status} at={at} />
 				</PopoverContent>
 			</Popover>
 		)
