@@ -13,7 +13,7 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
-import { formatDate } from '@/utils/date'
+import { formatDate, getNextMonth, getToday, getYesterday } from '@/utils/date'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
@@ -30,7 +30,7 @@ const DayOfServicesForm = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			date: new Date(),
+			date: getToday(),
 		},
 	})
 
@@ -74,6 +74,9 @@ const DayOfServicesForm = () => {
 										selected={field.value}
 										onSelect={field.onChange}
 										initialFocus
+										disabled={(date) =>
+											date < getYesterday() || date > getNextMonth()
+										}
 									/>
 								</PopoverContent>
 							</Popover>
