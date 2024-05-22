@@ -1,5 +1,5 @@
 import useFootballFieldStore from '@/stores/football-field'
-import useDayOfServicesQueries from '../hooks/DayOfServicesQuery'
+import useDayOfServicesQueries from '../hooks/useDayOfServicesQueries'
 import SubfieldServicesItem from './SubfieldServicesItem'
 import { QueryObserverResult } from '@tanstack/react-query'
 import { TDayOfServices } from '@/types'

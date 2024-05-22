@@ -66,3 +66,25 @@ export type TDayOfServices = {
 	turnOfServices: TTurnOfService[]
 	availability?: boolean
 }
+
+export type TBooking = {
+	_id: string
+	userId: string
+	name: string | null
+	subfieldId: string
+	subfield: TSubField
+	fieldId: string
+	field: TFootballField
+	date: Date | string
+	from: TTimeStep
+	to: TTimeStep
+	price: number
+	status: TBookingStatus
+	confirmed?: boolean
+	canceled?: boolean
+	paid?: boolean
+	createdAt?: Date | string
+	updatedAt?: Date | string
+	description?: string
+	additionalServices?: unknown
+}
