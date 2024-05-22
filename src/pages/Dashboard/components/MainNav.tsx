@@ -1,5 +1,6 @@
+import { PATHS } from '@/constants/navigation'
 import { cn } from '@/lib/utils'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export function MainNav({
 	className,
@@ -10,36 +11,36 @@ export function MainNav({
 			className={cn('flex items-center space-x-4 lg:space-x-6', className)}
 			{...props}
 		>
-			<Link
-				to="/"
-				className="text-nowrap text-sm font-medium transition-colors hover:text-primary"
-			>
-				Overview
-			</Link>
-			<Link
-				to="/"
+			<NavLink
+				to={PATHS.DASHBOARD}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
-				Bookings
-			</Link>
-			<Link
-				to="/"
+				Overview
+			</NavLink>
+			<NavLink
+				to={PATHS.DAY_OF_SERVICES}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Day of services
-			</Link>
-			<Link
-				to="/"
+			</NavLink>
+			<NavLink
+				to={PATHS.BOOKINGS}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
-				Customers
-			</Link>
-			<Link
-				to="/"
+				Bookings
+			</NavLink>
+			<NavLink
+				to={PATHS.PAYMENTS}
+				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+			>
+				Payments
+			</NavLink>
+			<NavLink
+				to={PATHS.SETTINGS}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Settings
-			</Link>
+			</NavLink>
 		</nav>
 	)
 }

@@ -26,6 +26,8 @@ export type TSubField = {
 	name: string
 	size: number
 	defaultPrice?: number
+	createdAt: string
+	updatedAt: string
 }
 
 export type TFootballField = {
@@ -36,7 +38,10 @@ export type TFootballField = {
 	closedAt: string
 	images: string[]
 	location: TLocation
-	subfield: TSubField[]
+	subfields?: TSubField[]
+	subfieldIds: string[]
+	createdAt: string
+	updatedAt: string
 }
 
 export type TBookingStatus = 'confirmed' | 'canceled' | 'pending'
@@ -50,3 +55,14 @@ export type TTurnOfService = {
 }
 
 export type TFootballFieldSize = '5' | '6' | '7' | '11'
+
+export type TDayOfServices = {
+	_id: string
+	fieldId: string
+	field?: TFootballField
+	subfieldId: string
+	subfield?: TSubField
+	date: string
+	turnOfServices: TTurnOfService[]
+	availability?: boolean
+}
