@@ -10,12 +10,12 @@ import ColumnActions from './ColumnActions'
 
 const Columns: ColumnDef<TBooking, TBooking>[] = [
 	{
-		accessorKey: '_id',
-		size: 0,
-	},
-	{
 		id: 'actions',
 		cell: ({ row }) => <ColumnActions {...row.original} />,
+	},
+	{
+		accessorKey: '_id',
+		size: 0,
 	},
 	{
 		accessorKey: 'status',
