@@ -125,9 +125,7 @@ const LoginForm = () => {
 					type="submit"
 					className="w-full text-base"
 				>
-					{isSubmitting && (
-						<Icons.Loader className="mr-1 text-primary-foreground" />
-					)}
+					{isSubmitting && <Icons.Loader className="mr-1" />}
 					Login
 				</Button>
 				<FormMessage>{errors.root?.message}</FormMessage>

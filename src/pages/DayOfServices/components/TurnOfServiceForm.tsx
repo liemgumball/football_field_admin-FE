@@ -13,11 +13,10 @@ import {
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
-import { updateDayOfServices } from '@/services/day-of-services'
-import useFootballFieldStore from '@/stores/football-field'
 import { toast } from '@/components/ui/use-toast'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { TTimeStep } from '@/types'
+import useTurnOfServicesMutation from '../hooks/useTurnOfServicesMutation'
+import { Icons } from '@/components/Icons'
 
 const formSchema = z.object({
 	at: z.string(),
@@ -38,10 +37,6 @@ const TurnOfServiceForm = (props: {
 	_id: string
 }) => {
 	const { price, status, _id, at } = props
-	const field = useFootballFieldStore((state) => state.field)
-	const queryClient = useQueryClient()
-
-	if (!field) throw new Error('Field not found')
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -52,12 +47,7 @@ const TurnOfServiceForm = (props: {
 		},
 	})
 
-	const { mutateAsync } = useMutation({
-		mutationFn: (data: z.infer<typeof formSchema>) =>
-			updateDayOfServices(_id, field._id, { turnOfServices: [data] }),
-		onSettled: () =>
-			queryClient.invalidateQueries({ queryKey: ['day-of-services'] }),
-	})
+	const { mutateAsync } = useTurnOfServicesMutation(_id)
 
 	const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = async (
 		values,
@@ -126,6 +116,7 @@ const TurnOfServiceForm = (props: {
 					type="submit"
 					disabled={!form.formState.isDirty || form.formState.isSubmitting}
 				>
+					{form.formState.isSubmitting && <Icons.Loader className="mr-1" />}
 					Save
 				</Button>
 			</form>
