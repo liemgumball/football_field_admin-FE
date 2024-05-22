@@ -14,6 +14,7 @@ const Login = lazy(() => import('@/pages/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 const Home = lazy(() => import('@/pages/Home'))
 const DayOfServices = lazy(() => import('@/pages/DayOfServices'))
+const Bookings = lazy(() => import('@/pages/Bookings'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
 					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<Home />} />
 					<Route path={PATHS.DAY_OF_SERVICES} element={<DayOfServices />} />
+					<Route path={PATHS.BOOKINGS} element={<Bookings />} />
 				</Route>
 			</Route>
 			,
