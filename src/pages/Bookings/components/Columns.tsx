@@ -34,7 +34,7 @@ const Columns: ColumnDef<TBooking, TBooking>[] = [
 		header: 'Subfield',
 		cell: ({ cell }) => {
 			const subfield = cell.getValue() as unknown as TSubField
-			return <div className="w-[20px]">{subfield.name}</div>
+			return <div className="">{subfield.name}</div>
 		},
 	},
 
@@ -61,8 +61,17 @@ const Columns: ColumnDef<TBooking, TBooking>[] = [
 		accessorKey: 'price',
 		header: ({ column }) => <ColumnHeader column={column} title="Price" />,
 		cell: ({ cell }) => (
-			<div className="w-[120px] truncate">
+			<div className="truncate">
 				{formatPrice(cell.getValue() as unknown as number)}
+			</div>
+		),
+	},
+	{
+		accessorKey: 'createdAt',
+		header: ({ column }) => <ColumnHeader column={column} title="Created At" />,
+		cell: ({ cell }) => (
+			<div className="truncate">
+				{format(cell.getValue() as unknown as string, 'PPP')}
 			</div>
 		),
 	},

@@ -72,7 +72,7 @@ const DataTable = <TData, TValue>({ columns, data }: TProps<TData, TValue>) => {
 				<DataTableViewOptions table={table} />
 			</div>
 			<div className="my-4 rounded-md border px-4">
-				<Table>
+				<Table className="">
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<TableRow key={headerGroup.id}>
