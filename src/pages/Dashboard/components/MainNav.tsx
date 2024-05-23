@@ -33,10 +33,10 @@ export function MainNav({
 				Bookings
 			</NavLink>
 			<NavLink
-				to={PATHS.PAYMENTS}
+				to={PATHS.REVIEWS}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
-				Payments
+				Reviews
 			</NavLink>
 			<NavLink
 				to={PATHS.SETTINGS}
