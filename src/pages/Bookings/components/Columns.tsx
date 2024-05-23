@@ -15,6 +15,8 @@ const Columns: ColumnDef<TBooking, TBooking>[] = [
 	},
 	{
 		accessorKey: '_id',
+		id: 'ID',
+		header: 'ID',
 		size: 0,
 	},
 	{
@@ -68,10 +70,11 @@ const Columns: ColumnDef<TBooking, TBooking>[] = [
 	},
 	{
 		accessorKey: 'createdAt',
+		id: 'Created At',
 		header: ({ column }) => <ColumnHeader column={column} title="Created At" />,
 		cell: ({ cell }) => (
 			<div className="truncate">
-				{format(cell.getValue() as unknown as string, 'PPP')}
+				{format(cell.getValue() as unknown as string, 'Pp')}
 			</div>
 		),
 	},

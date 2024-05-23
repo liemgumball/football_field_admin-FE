@@ -42,7 +42,7 @@ const DataTable = <TData, TValue>({ columns, data }: TProps<TData, TValue>) => {
 	const table = useReactTable({
 		data,
 		columns,
-		initialState: { columnVisibility: { _id: false } },
+		initialState: { columnVisibility: { ID: false } },
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 		onSortingChange: setSorting,
@@ -57,7 +57,7 @@ const DataTable = <TData, TValue>({ columns, data }: TProps<TData, TValue>) => {
 
 	// Update data filter on debounce change
 	useEffect(() => {
-		table.getColumn('_id')?.setFilterValue(debounceSearch)
+		table.getColumn('ID')?.setFilterValue(debounceSearch)
 	}, [debounceSearch, table])
 
 	return (
@@ -97,6 +97,12 @@ const DataTable = <TData, TValue>({ columns, data }: TProps<TData, TValue>) => {
 								<TableRow
 									key={row.id}
 									data-state={row.getIsSelected() && 'selected'}
+									className={
+										// Highlight pending bookings
+										row.getValue('status') === 'pending'
+											? 'bg-secondary/90 text-secondary-foreground'
+											: ''
+									}
 								>
 									{row.getVisibleCells().map((cell) => (
 										<TableCell key={cell.id}>
