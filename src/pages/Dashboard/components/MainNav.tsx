@@ -8,7 +8,10 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
 	return (
 		<nav
-			className={cn('flex items-center space-x-4 lg:space-x-6', className)}
+			className={cn(
+				'flex flex-wrap items-center gap-x-4 gap-y-2 lg:gap-x-6',
+				className,
+			)}
 			{...props}
 		>
 			<NavLink
@@ -30,10 +33,10 @@ export function MainNav({
 				Bookings
 			</NavLink>
 			<NavLink
-				to={PATHS.PAYMENTS}
+				to={PATHS.REVIEWS}
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
-				Payments
+				Reviews
 			</NavLink>
 			<NavLink
 				to={PATHS.SETTINGS}

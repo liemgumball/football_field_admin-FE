@@ -1,18 +1,50 @@
 import { Icons } from '@/components/Icons'
 import { Button } from '@/components/ui/button'
-import { TFootballFieldContext } from '@/types'
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from '@/components/ui/tooltip'
+import { TFootballField } from '@/types'
+import { useQueryClient } from '@tanstack/react-query'
 
-const FootballFieldHeader = (props: TFootballFieldContext) => {
-	const { field, refetch, isFetching, isStale } = props
+type TProps = {
+	field: TFootballField
+	isFetching: boolean
+	isStale: boolean
+}
 
-	if (!field || !refetch) return null
+const FootballFieldHeader = (props: TProps) => {
+	const { field, isFetching, isStale } = props
+
+	const queryClient = useQueryClient()
+
+	const onClick = () => {
+		queryClient.invalidateQueries()
+	}
 
 	return (
 		<section className="flex items-center justify-between gap-4">
 			<h2>{field.name}</h2>
-			<Button onClick={refetch} size="sm" disabled={isStale} variant="ghost">
-				<Icons.Refresh isFetching={isFetching} />
-			</Button>
+			<TooltipProvider>
+				<Tooltip>
+					<Button
+						onClick={onClick}
+						size="sm"
+						disabled={!isStale}
+						variant="ghost"
+						asChild
+					>
+						<TooltipTrigger>
+							<Icons.Refresh isFetching={isFetching} />
+						</TooltipTrigger>
+					</Button>
+					<TooltipContent>
+						<p>Refresh</p>
+					</TooltipContent>
+				</Tooltip>
+			</TooltipProvider>
 		</section>
 	)
 }

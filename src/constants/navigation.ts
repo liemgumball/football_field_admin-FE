@@ -6,4 +6,5 @@ export const PATHS = {
 	PAYMENTS: '/payments',
 	SETTINGS: '/settings',
 	SUBFIELDS: '/subfields',
+	REVIEWS: '/reviews',
 } as const
