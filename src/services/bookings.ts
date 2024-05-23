@@ -6,6 +6,11 @@ export const getBookings = (fieldId: string) =>
 		withCredentials: true,
 	})
 
+export const getBookingDetails = (bookingId: string | undefined) =>
+	apiRequest(`bookings/${bookingId}`, {
+		withCredentials: true,
+	})
+
 export const updateBooking = (
 	id: string,
 	fieldId: string,
