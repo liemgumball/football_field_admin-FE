@@ -1,10 +1,10 @@
 import { updateDayOfServices } from '@/services/day-of-services'
-import { TFootballFieldContext, TTurnOfService } from '@/types'
+import { TFootballField, TTurnOfService } from '@/types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useOutletContext } from 'react-router-dom'
 
 const useTurnOfServicesMutation = (id: string) => {
-	const { field } = useOutletContext() as TFootballFieldContext
+	const field = useOutletContext() as TFootballField
 
 	const queryClient = useQueryClient()
 

@@ -6,10 +6,16 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { TFootballFieldContext } from '@/types'
+import { TFootballField } from '@/types'
 import { useQueryClient } from '@tanstack/react-query'
 
-const FootballFieldHeader = (props: TFootballFieldContext) => {
+type TProps = {
+	field: TFootballField
+	isFetching: boolean
+	isStale: boolean
+}
+
+const FootballFieldHeader = (props: TProps) => {
 	const { field, isFetching, isStale } = props
 
 	const queryClient = useQueryClient()

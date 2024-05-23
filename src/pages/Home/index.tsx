@@ -4,13 +4,13 @@ import { Suspense, lazy } from 'react'
 import { Icons } from '@/components/Icons'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useOutletContext } from 'react-router-dom'
-import { TFootballFieldContext } from '@/types'
+import { TFootballField } from '@/types'
 
 const OverviewTab = lazy(() => import('./tabs/OverviewTab'))
 const SubfieldsTab = lazy(() => import('./tabs/SubfieldsTab'))
 
 const Home = () => {
-	const { field } = useOutletContext() as TFootballFieldContext
+	const field = useOutletContext() as TFootballField
 
 	return (
 		<div className="space-y-4 py-8">
