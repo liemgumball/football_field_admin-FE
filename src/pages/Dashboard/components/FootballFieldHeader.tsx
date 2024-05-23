@@ -1,9 +1,9 @@
 import { Icons } from '@/components/Icons'
 import { Button } from '@/components/ui/button'
-import useFootballFieldStore from '@/stores/football-field'
+import { TFootballFieldContext } from '@/types'
 
-const FootballFieldHeader = () => {
-	const { field, refetch, isStale, isFetching } = useFootballFieldStore()
+const FootballFieldHeader = (props: TFootballFieldContext) => {
+	const { field, refetch, isFetching, isStale } = props
 
 	if (!field || !refetch) return null
 

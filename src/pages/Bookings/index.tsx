@@ -6,7 +6,7 @@ import Columns from './components/Columns'
 const Bookings = () => {
 	const { data, isLoading } = useBookingsQuery()
 
-	if (isLoading) return <Icons.Loader />
+	if (isLoading) return <Icons.Loader size={60} className="container my-16" />
 
 	return (
 		<main className="container my-4">

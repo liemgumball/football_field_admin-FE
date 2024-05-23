@@ -88,3 +88,10 @@ export type TBooking = {
 	description?: string
 	additionalServices?: unknown
 }
+
+export type TFootballFieldContext = {
+	field: TFootballField
+	refetch: () => void
+	isFetching: boolean
+	isStale: boolean
+}
