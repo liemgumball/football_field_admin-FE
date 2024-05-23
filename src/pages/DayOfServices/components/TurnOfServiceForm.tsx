@@ -27,12 +27,12 @@ const formSchema = z.object({
 			.transform((i) => Number(i))
 			.refine((i) => i > 0 && Number.isInteger(i)),
 	]),
-	status: z.enum(['available', 'used']),
+	status: z.enum(['available', 'unavailable']),
 })
 
 const TurnOfServiceForm = (props: {
 	at: TTimeStep
-	status: 'available' | 'used'
+	status: 'available' | 'unavailable'
 	price: number
 	_id: string
 }) => {
@@ -80,7 +80,7 @@ const TurnOfServiceForm = (props: {
 								<Switch
 									checked={field.value === 'available'}
 									onCheckedChange={(e) =>
-										field.onChange(e ? 'available' : 'used')
+										field.onChange(e ? 'available' : 'unavailable')
 									}
 								/>
 							</FormControl>
