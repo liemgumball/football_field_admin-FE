@@ -1,11 +1,10 @@
 import { getBookings } from '@/services/bookings'
-import useFootballFieldStore from '@/stores/football-field'
-import { TBooking } from '@/types'
+import { TBooking, TFootballFieldContext } from '@/types'
 import { useQuery } from '@tanstack/react-query'
+import { useOutletContext } from 'react-router-dom'
 
 const useBookingsQuery = () => {
-	const field = useFootballFieldStore((state) => state.field)
-	if (!field) throw new Error('Field not found')
+	const { field } = useOutletContext() as TFootballFieldContext
 
 	return useQuery<TBooking[]>({
 		queryKey: ['bookings'],

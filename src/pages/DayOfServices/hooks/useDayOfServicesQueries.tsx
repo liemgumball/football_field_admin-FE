@@ -1,13 +1,11 @@
 import { geTDayOfServicesBySubfieldId } from '@/services/day-of-services'
-import useFootballFieldStore from '@/stores/football-field'
-import { TDayOfServices } from '@/types'
+import { TDayOfServices, TFootballFieldContext } from '@/types'
 import { getInitialDate } from '@/utils/date'
 import { useQueries } from '@tanstack/react-query'
-import { useSearchParams } from 'react-router-dom'
+import { useOutletContext, useSearchParams } from 'react-router-dom'
 
 const useDayOfServicesQueries = () => {
-	const field = useFootballFieldStore((state) => state.field)
-	if (!field) throw new Error('Field not found')
+	const { field } = useOutletContext() as TFootballFieldContext
 
 	const [searchParams] = useSearchParams()
 	const dateText = searchParams.get('date')

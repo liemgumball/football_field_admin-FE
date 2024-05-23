@@ -1,13 +1,11 @@
 import { updateBooking } from '@/services/bookings'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import useFootballFieldStore from '@/stores/football-field'
-import { TBooking } from '@/types'
+import { TBooking, TFootballFieldContext } from '@/types'
+import { useOutletContext } from 'react-router-dom'
 
 const useBookingMutation = (id: string) => {
 	const queryClient = useQueryClient()
-	const field = useFootballFieldStore((state) => state.field)
-
-	if (!field) throw new Error('Field not found')
+	const { field } = useOutletContext() as TFootballFieldContext
 
 	return useMutation({
 		mutationFn: (data: Partial<TBooking>) => updateBooking(id, field._id, data),
