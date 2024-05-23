@@ -30,21 +30,28 @@ const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
 			</li>
 		)
 
-	if (status === 'progressing')
+	if (status === 'unavailable')
 		item = (
 			<li className="flex items-center justify-between rounded border bg-secondary p-2 text-secondary-foreground hover:bg-accent/60">
 				{content}
 			</li>
 		)
 
-	if (status === 'used')
+	if (status === 'progressing')
 		item = (
-			<li className="flex items-center justify-between rounded border bg-muted p-2 text-muted-foreground hover:bg-accent/60">
+			<li className="flex items-center justify-between rounded border bg-accent p-2 text-accent-foreground">
 				{content}
 			</li>
 		)
 
-	if (status !== 'progressing')
+	if (status === 'used')
+		item = (
+			<li className="flex items-center justify-between rounded border bg-muted p-2 text-muted-foreground">
+				{content}
+			</li>
+		)
+
+	if (status === 'available' || status === 'unavailable')
 		return (
 			<Popover>
 				<PopoverTrigger className="w-full">{item}</PopoverTrigger>
