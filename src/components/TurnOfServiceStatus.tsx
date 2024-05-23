@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { TTurnOfServiceStatus } from '@/types'
-import { EllipsisIcon, TicketCheckIcon, TicketIcon } from 'lucide-react'
+import { EllipsisIcon, TicketIcon, TicketXIcon, User2Icon } from 'lucide-react'
 
 const TurnOfServiceStatus = ({
 	status,
@@ -21,9 +21,14 @@ const TurnOfServiceStatus = ({
 			/>
 		)
 
+	if (status === 'unavailable')
+		Icon = () => (
+			<TicketXIcon className="mr-2 inline-block text-primary" size={16} />
+		)
+
 	if (status === 'used')
 		Icon = () => (
-			<TicketCheckIcon className="mr-2 inline-block text-primary" size={16} />
+			<User2Icon className="mr-2 inline-block text-primary" size={16} />
 		)
 
 	if (status === 'progressing')

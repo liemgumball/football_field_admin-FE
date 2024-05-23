@@ -46,7 +46,11 @@ export type TFootballField = {
 
 export type TBookingStatus = 'confirmed' | 'canceled' | 'pending'
 
-export type TTurnOfServiceStatus = 'available' | 'progressing' | 'used'
+export type TTurnOfServiceStatus =
+	| 'available'
+	| 'unavailable'
+	| 'progressing'
+	| 'used'
 
 export type TTurnOfService = {
 	at: TTimeStep
