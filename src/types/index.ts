@@ -91,4 +91,5 @@ export type TBooking = {
 	updatedAt?: Date | string
 	description?: string
 	additionalServices?: unknown
+	user: TUser
 }
