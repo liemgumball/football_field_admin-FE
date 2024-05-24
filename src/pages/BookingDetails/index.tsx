@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import BookingDetailsTitle from './BookingDetailsHeader'
 import BookingDetailsContent from './BookingDetailsContent'
 import { TBooking } from '@/types'
+import { Icons } from '@/components/Icons'
 
 const BookingDetails = () => {
 	const { id } = useParams()
@@ -17,7 +18,7 @@ const BookingDetails = () => {
 		queryFn: () => getBookingDetails(id),
 	})
 
-	if (isLoading) return <p>is loading</p>
+	if (isLoading) return <Icons.Loader size={60} className="container my-16" />
 
 	if (isError)
 		return <p className="text-destructive">Fail to get booking information</p>
