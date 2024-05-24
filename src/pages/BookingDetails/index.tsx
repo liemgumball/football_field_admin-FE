@@ -25,8 +25,6 @@ const BookingDetails = () => {
 	if (!booking)
 		return <p className="text-muted-foreground">Booking not found</p>
 
-	console.log(booking)
-
 	return (
 		<main className="space-y-4">
 			<BookingDetailsTitle {...booking} />

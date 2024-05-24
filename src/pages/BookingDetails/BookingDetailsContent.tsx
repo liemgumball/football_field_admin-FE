@@ -18,7 +18,7 @@ const BookingDetailsContent = (props: TBooking) => {
 	} = props
 
 	return (
-		<section className="mt-5 space-y-3 text-xl font-medium">
+		<section className="mt-5 space-y-3 text-base font-medium md:text-xl">
 			<h3 className="text-4xl ">Booking details</h3>
 			<Separator />
 			<p>Booking ID: {_id}</p>
