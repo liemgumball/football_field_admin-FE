@@ -56,6 +56,7 @@ export type TTurnOfService = {
 	at: TTimeStep
 	price: number
 	status: TTurnOfServiceStatus
+	bookingId?: string
 }
 
 export type TFootballFieldSize = '5' | '6' | '7' | '11'
