@@ -9,13 +9,14 @@ import { lazy } from 'react'
 import { PATHS } from '@/constants/navigation'
 import RouteError from './RouteError'
 import Dashboard from '@/pages/Dashboard'
-import BookingDetails from '@/pages/BookingDetails'
 
 const Login = lazy(() => import('@/pages/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 const Home = lazy(() => import('@/pages/Home'))
 const DayOfServices = lazy(() => import('@/pages/DayOfServices'))
 const Bookings = lazy(() => import('@/pages/Bookings'))
+const BookingDetails = lazy(() => import('@/pages/BookingDetails'))
+const SubFieldDetails = lazy(() => import('@/pages/SubFieldDetails'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
 						<Route index element={<Bookings />} />
 						<Route path={`:id`} element={<BookingDetails />} />
 					</Route>
+					<Route
+						path={`${PATHS.SUBFIELDS}/:id`}
+						element={<SubFieldDetails />}
+					/>
 				</Route>
 			</Route>
 			,
