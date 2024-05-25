@@ -1,4 +1,4 @@
-import { useOutletContext, useParams } from 'react-router-dom'
+import { Outlet, useOutletContext, useParams } from 'react-router-dom'
 import { TFootballField, TSubField } from '@/types'
 import { getSubFieldDetails } from '@/services/sub-field'
 import { Icons } from '@/components/Icons'
@@ -25,9 +25,11 @@ const SubFieldDetails = () => {
 	if (!subfield) return <Icons.Loader size={60} className="container my-16" />
 
 	return (
-		<main className="space-y-4">
+		<main className="space-y-4 ">
 			<Separator />
-			<SubFieldDetailsContent subfield={subfield} />
+			<div className="md:container md:max-w-max">
+				<SubFieldDetailsContent subfield={subfield} />
+			</div>
 		</main>
 	)
 }
