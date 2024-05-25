@@ -1,6 +1,6 @@
 import { TBooking } from '@/types'
 import { Separator } from '@/components/ui/separator'
-import { Button } from '@/components/ui/button'
+import { ButtonStatus } from './components/ButtonStatus'
 
 const BookingDetailsTitle = ({
 	status,
@@ -9,9 +9,9 @@ const BookingDetailsTitle = ({
 		<section>
 			<Separator />
 			<div className="my-4 ">
-				<Button className="max-w-max rounded-3xl uppercase" size="lg">
+				<ButtonStatus size="lg" status={status} className="uppercase">
 					{status}
-				</Button>
+				</ButtonStatus>
 			</div>
 			<Separator />
 		</section>

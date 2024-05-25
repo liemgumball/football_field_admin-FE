@@ -25,9 +25,11 @@ const SubFieldDetails = () => {
 	if (!subfield) return <Icons.Loader size={60} className="container my-16" />
 
 	return (
-		<main className="space-y-4">
+		<main className="space-y-4 ">
 			<Separator />
-			<SubFieldDetailsContent subfield={subfield} />
+			<div className="md:container md:max-w-max">
+				<SubFieldDetailsContent subfield={subfield} />
+			</div>
 		</main>
 	)
 }

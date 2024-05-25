@@ -7,9 +7,11 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover'
 import TurnOfServiceForm from './TurnOfServiceForm'
+import { Link } from 'react-router-dom'
+import { PATHS } from '@/constants/navigation'
 
 const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
-	const { at, price, status, _id } = props
+	const { at, price, status, bookingId, _id } = props
 
 	const content = (
 		<>
@@ -46,9 +48,11 @@ const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
 
 	if (status === 'used')
 		item = (
-			<li className="flex items-center justify-between rounded border bg-muted p-2 text-muted-foreground">
-				{content}
-			</li>
+			<Link className="block" to={`${PATHS.BOOKINGS}/${bookingId}`}>
+				<li className="flex items-center justify-between rounded border bg-muted p-2 text-muted-foreground hover:bg-muted/70">
+					{content}
+				</li>
+			</Link>
 		)
 
 	if (status === 'available' || status === 'unavailable')
