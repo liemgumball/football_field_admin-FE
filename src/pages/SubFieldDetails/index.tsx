@@ -1,4 +1,4 @@
-import { Outlet, useOutletContext, useParams } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 import { TFootballField, TSubField } from '@/types'
 import { getSubFieldDetails } from '@/services/sub-field'
 import { Icons } from '@/components/Icons'
