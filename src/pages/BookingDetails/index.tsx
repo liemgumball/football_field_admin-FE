@@ -1,8 +1,8 @@
 import { getBookingDetails } from '@/services/bookings'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import BookingDetailsTitle from './BookingDetailsHeader'
-import BookingDetailsContent from './BookingDetailsContent'
+import BookingDetailsTitle from './components/BookingDetailsHeader'
+import BookingDetailsContent from './components/BookingDetailsContent'
 import { TBooking } from '@/types'
 import { Icons } from '@/components/Icons'
 

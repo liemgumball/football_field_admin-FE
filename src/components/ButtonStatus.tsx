@@ -42,6 +42,5 @@ const ButtonStatus = ({
 		/>
 	)
 }
-ButtonStatus.displayName = 'Button Status'
 
-export { buttonStatusStyles, ButtonStatus }
+export default ButtonStatus

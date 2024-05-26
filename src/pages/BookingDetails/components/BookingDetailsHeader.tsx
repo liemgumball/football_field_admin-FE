@@ -1,6 +1,6 @@
 import { TBooking } from '@/types'
 import { Separator } from '@/components/ui/separator'
-import { ButtonStatus } from './components/ButtonStatus'
+import ButtonStatus from '../../../components/ButtonStatus'
 
 const BookingDetailsTitle = ({
 	status,
