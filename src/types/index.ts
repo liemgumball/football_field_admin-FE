@@ -2,6 +2,8 @@ import { timeValues } from '@/constants/time'
 
 export type TTimeStep = (typeof timeValues)[number] | string
 
+export type TSize = 5 | 6 | 7 | 11
+
 export type TUser = {
 	_id: string
 	accessToken: string
@@ -24,10 +26,11 @@ export type TLocation = {
 export type TSubField = {
 	_id: string
 	name: string
-	size: number
+	size: TSize
 	defaultPrice?: number
 	createdAt: string
 	updatedAt: string
+	image?: string
 }
 
 export type TFootballField = {

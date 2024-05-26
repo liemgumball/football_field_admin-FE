@@ -18,10 +18,7 @@ export const Icons = {
 	),
 
 	Loader: ({ size = 18, className }: { size?: number; className?: string }) => (
-		<Loader2Icon
-			className={cn('animate-spin text-muted-foreground', className)}
-			size={size}
-		/>
+		<Loader2Icon className={cn('animate-spin', className)} size={size} />
 	),
 
 	Refresh: ({

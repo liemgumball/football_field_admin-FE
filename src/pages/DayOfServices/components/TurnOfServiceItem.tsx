@@ -46,7 +46,7 @@ const TurnOfServiceItem = (props: TTurnOfService & { _id: string }) => {
 			</li>
 		)
 
-	if (status === 'used')
+	if (status === 'used' || status === 'progressing')
 		item = (
 			<Link className="block" to={`${PATHS.BOOKINGS}/${bookingId}`}>
 				<li className="flex items-center justify-between rounded border bg-muted p-2 text-muted-foreground hover:bg-muted/70">
