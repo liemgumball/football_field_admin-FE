@@ -2,7 +2,7 @@ import { TBooking } from '@/types'
 import { Separator } from '@/components/ui/separator'
 import ButtonStatus from '../../../components/ButtonStatus'
 
-const BookingDetailsTitle = ({
+const BookingDetailsHeader = ({
 	status,
 }: Pick<TBooking, 'field' | 'status'>) => {
 	return (
@@ -18,4 +18,4 @@ const BookingDetailsTitle = ({
 	)
 }
 
-export default BookingDetailsTitle
+export default BookingDetailsHeader

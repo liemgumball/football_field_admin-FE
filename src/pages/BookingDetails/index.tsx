@@ -1,7 +1,7 @@
 import { getBookingDetails } from '@/services/bookings'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import BookingDetailsTitle from './components/BookingDetailsHeader'
+import BookingDetailsHeader from './components/BookingDetailsHeader'
 import BookingDetailsContent from './components/BookingDetailsContent'
 import { TBooking } from '@/types'
 import { Icons } from '@/components/Icons'
@@ -28,7 +28,7 @@ const BookingDetails = () => {
 
 	return (
 		<main className="space-y-4">
-			<BookingDetailsTitle {...booking} />
+			<BookingDetailsHeader {...booking} />
 			<BookingDetailsContent {...booking} />
 		</main>
 	)
