@@ -14,6 +14,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip'
+import SubFieldImageDialog from './SubFieldImageDialog'
 
 const SubFieldDetailsContent = (props: TSubField) => {
 	const { _id, name, size, defaultPrice, image } = props
@@ -38,15 +39,17 @@ const SubFieldDetailsContent = (props: TSubField) => {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger>
-							{image ? (
-								<div className="max-w-max overflow-hidden rounded-lg border">
-									<img src={image} alt="subfield image" />
-								</div>
-							) : (
-								<div className="flex min-h-36 min-w-96 items-center justify-center rounded-lg border">
-									<p className="text-muted-foreground">No image provided</p>
-								</div>
-							)}
+							<SubFieldImageDialog id={_id}>
+								{image ? (
+									<div className="max-w-max overflow-hidden rounded-lg border">
+										<img src={image} alt="subfield image" />
+									</div>
+								) : (
+									<div className="flex min-h-36 min-w-96 items-center justify-center rounded-lg border">
+										<p className="text-muted-foreground">No image provided</p>
+									</div>
+								)}
+							</SubFieldImageDialog>
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>Click to {image ? 'change' : 'add'} image</p>

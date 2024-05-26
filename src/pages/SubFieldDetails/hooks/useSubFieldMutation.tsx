@@ -10,7 +10,7 @@ const useSubFieldMutation = (id: string) => {
 	return useMutation({
 		mutationKey: ['subfield', id],
 
-		mutationFn: (data: Partial<Omit<TSubField, 'size'>> & { size: string }) =>
+		mutationFn: (data: Partial<Omit<TSubField, 'size'> & { size: string }>) =>
 			updateSubfield(id, field._id, data),
 
 		onSettled: () =>

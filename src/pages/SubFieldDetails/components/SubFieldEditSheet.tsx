@@ -5,6 +5,7 @@ import {
 	SheetContent,
 	SheetHeader,
 	SheetDescription,
+	SheetFooter,
 } from '@/components/ui/sheet'
 import { TSubField } from '@/types'
 import SubFieldEditForm from './SubFieldEditForm'
@@ -29,7 +30,13 @@ const SubFieldEditSheet = ({ subfield }: { subfield: TSubField }) => {
 						Make changes to subfield's information here
 					</SheetDescription>
 				</SheetHeader>
-				<SubFieldEditForm subfield={subfield} close={() => setIsOpen(false)} />
+
+				<SheetFooter>
+					<SubFieldEditForm
+						subfield={subfield}
+						close={() => setIsOpen(false)}
+					/>
+				</SheetFooter>
 			</SheetContent>
 		</Sheet>
 	)

@@ -7,4 +7,5 @@ export const ENV_VARS = {
 		ACCESS_TOKEN: import.meta.env.VITE_MAP_ACCESS_TOKEN ?? '',
 		STYLE_URL: import.meta.env.VITE_MAP_STYLE_URL ?? '',
 	},
+	IMAGE_SERVER_URL: import.meta.env.VITE_IMAGE_SERVER_URL ?? '',
 } as const
