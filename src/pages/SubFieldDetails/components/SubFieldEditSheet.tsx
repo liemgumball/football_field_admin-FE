@@ -7,14 +7,20 @@ import {
 	SheetDescription,
 } from '@/components/ui/sheet'
 import { TSubField } from '@/types'
-import SubfieldEditForm from './SubfieldEditForm'
+import SubFieldEditForm from './SubFieldEditForm'
 import { PencilIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 
 const SubFieldEditSheet = ({ subfield }: { subfield: TSubField }) => {
+	const [isOpen, setIsOpen] = useState(false)
+
 	return (
-		<Sheet>
-			<SheetTrigger>
-				<PencilIcon size={15} />
+		<Sheet open={isOpen} onOpenChange={setIsOpen}>
+			<SheetTrigger className="max-w-max">
+				<Button variant="ghost" size="icon" className="p-2">
+					<PencilIcon size={16} />
+				</Button>
 			</SheetTrigger>
 			<SheetContent side="left">
 				<SheetHeader>
@@ -23,7 +29,7 @@ const SubFieldEditSheet = ({ subfield }: { subfield: TSubField }) => {
 						Make changes to subfield's information here
 					</SheetDescription>
 				</SheetHeader>
-				<SubfieldEditForm subfield={subfield} />
+				<SubFieldEditForm subfield={subfield} close={() => setIsOpen(false)} />
 			</SheetContent>
 		</Sheet>
 	)
