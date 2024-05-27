@@ -17,6 +17,7 @@ const DayOfServices = lazy(() => import('@/pages/DayOfServices'))
 const Bookings = lazy(() => import('@/pages/Bookings'))
 const BookingDetails = lazy(() => import('@/pages/BookingDetails'))
 const SubFieldDetails = lazy(() => import('@/pages/SubFieldDetails'))
+const Reviews = lazy(() => import('@/pages/Reviews'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
 						path={`${PATHS.SUBFIELDS}/:id`}
 						element={<SubFieldDetails />}
 					/>
+					<Route path={PATHS.REVIEWS} element={<Reviews />} />
 				</Route>
 			</Route>
 		</Route>,
