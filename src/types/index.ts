@@ -97,3 +97,11 @@ export type TBooking = {
 	additionalServices?: unknown
 	user: TUser
 }
+
+export type TReview = { rating: number; description: string }
+
+export type TBookingReview = {
+	review: TReview
+	user: TUser
+	_id: string
+}

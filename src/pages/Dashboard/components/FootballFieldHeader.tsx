@@ -29,7 +29,7 @@ const FootballFieldHeader = (props: TProps) => {
 			<div>
 				<h2>{field.name} </h2>
 				<p className="text-xl text-muted-foreground">
-					Rating - {field.rating?.toFixed(1)}
+					Rating - {field.rating ? field.rating.toFixed(1) : 'No rating'}
 				</p>
 			</div>
 			<TooltipProvider>
