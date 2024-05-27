@@ -16,17 +16,22 @@ type TProps = {
 }
 
 const FootballFieldHeader = (props: TProps) => {
+	const queryClient = useQueryClient()
 	const { field, isFetching, isStale } = props
 
-	const queryClient = useQueryClient()
-
+	// Refresh all queries
 	const onClick = () => {
 		queryClient.invalidateQueries()
 	}
 
 	return (
 		<section className="flex items-center justify-between gap-4">
-			<h2>{field.name}</h2>
+			<div>
+				<h2>{field.name} </h2>
+				<p className="text-xl text-muted-foreground">
+					Rating - {field.rating?.toFixed(1)}
+				</p>
+			</div>
 			<TooltipProvider>
 				<Tooltip>
 					<Button
