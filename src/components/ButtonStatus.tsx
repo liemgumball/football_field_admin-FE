@@ -7,10 +7,9 @@ const buttonStatusStyles = cva(
 	{
 		variants: {
 			status: {
-				default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-				confirmed: 'bg-green-500 text-white hover:bg-green-500/90',
-				canceled: 'bg-red-500 text-white hover:bg-red-500/90',
-				pending: 'bg-yellow-500 text-white hover:bg-yellow-500/90',
+				confirmed: 'bg-primary text-primary-foreground',
+				canceled: 'bg-muted-foreground text-primary-foreground',
+				pending: 'bg-secondary text-secondary-foreground',
 			},
 			size: {
 				default: 'h-10 px-4 py-2',
@@ -20,7 +19,7 @@ const buttonStatusStyles = cva(
 			},
 		},
 		defaultVariants: {
-			status: 'default',
+			status: 'confirmed',
 			size: 'default',
 		},
 	},
