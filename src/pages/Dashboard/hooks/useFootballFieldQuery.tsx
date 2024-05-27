@@ -11,6 +11,7 @@ const useFootballFieldQuery = () => {
 		queryKey: ['football-field', admin._id],
 		queryFn: () => getFootballField(admin._id),
 		staleTime: 10 * 1000,
+		refetchOnWindowFocus: true,
 	})
 }
 
