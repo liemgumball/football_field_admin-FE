@@ -15,7 +15,7 @@ import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
 import { toast } from '@/components/ui/use-toast'
 import { TTimeStep } from '@/types'
-import useTurnOfServicesMutation from '../hooks/useTurnOfServicesMutation'
+import useTurnOfServicesMutation from '@/hooks/DayOfServices/useTurnOfServicesMutation'
 import { Icons } from '@/components/Icons'
 
 const formSchema = z.object({

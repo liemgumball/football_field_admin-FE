@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/select'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useSubFieldMutation from '../hooks/useSubFieldMutation'
+import useSubFieldMutation from '@/hooks/SubFieldDetails/useSubFieldMutation'
 import { Icons } from '@/components/Icons'
 
 const sizeSchema = z.enum(['5', '6', '7', '11'])
@@ -114,7 +114,12 @@ const SubFieldEditForm = ({
 						<FormItem>
 							<FormLabel className="text-base">Price</FormLabel>
 							<FormControl>
-								<Input className="px-3 text-base" type="number" {...field} />
+								<Input
+									className="px-3 text-base"
+									type="number"
+									{...field}
+									onChange={(e) => field.onChange(Number(e.target.value))}
+								/>
 							</FormControl>
 						</FormItem>
 					)}

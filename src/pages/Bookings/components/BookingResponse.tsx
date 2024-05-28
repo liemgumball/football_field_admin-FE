@@ -10,7 +10,7 @@ import {
 	DialogFooter,
 } from '@/components/ui/dialog'
 import { CheckIcon, MinusCircleIcon } from 'lucide-react'
-import useBookingMutation from '../hooks/useBookingMutation'
+import useBookingMutation from '@/hooks/Bookings/useBookingMutation'
 import { toast } from '@/components/ui/use-toast'
 import { Icons } from '@/components/Icons'
 

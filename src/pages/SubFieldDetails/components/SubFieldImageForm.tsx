@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { uploadImage } from '@/services/sub-field'
 import { useState } from 'react'
-import useSubFieldMutation from '../hooks/useSubFieldMutation'
+import useSubFieldMutation from '@/hooks/SubFieldDetails/useSubFieldMutation'
 import { toast } from '@/components/ui/use-toast'
 import { Icons } from '@/components/Icons'
 

@@ -1,4 +1,4 @@
-import useBookingsQuery from './hooks/useBookingsQuery'
+import useBookingsQuery from '@/hooks/Bookings/useBookingsQuery'
 import { Icons } from '@/components/Icons'
 import DataTable from './components/DataTable'
 import Columns from './components/Columns'

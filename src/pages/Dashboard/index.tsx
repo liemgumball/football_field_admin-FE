@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 import DashboardHeader from './components/DashboardHeader'
 import { Suspense } from 'react'
 import { Icons } from '@/components/Icons'
-import useFootballFieldQuery from './hooks/useFootballFieldQuery'
+import useFootballFieldQuery from '@/hooks/Dashboard/useFootballFieldQuery'
 import FootballFieldHeader from './components/FootballFieldHeader'
 
 export const Dashboard = () => {

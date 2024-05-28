@@ -1,5 +1,5 @@
 import ListReview from './components/ListReview'
-import useReviewQuery from './hooks/useReviewQuery'
+import useReviewQuery from '@/hooks/Reviews/useReviewQuery'
 import { Icons } from '@/components/Icons'
 
 const Reviews = () => {
