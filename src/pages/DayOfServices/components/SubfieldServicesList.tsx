@@ -1,4 +1,4 @@
-import useDayOfServicesQueries from '../hooks/useDayOfServicesQueries'
+import useDayOfServicesQueries from '@/hooks/DayOfServices/useDayOfServicesQueries'
 import SubfieldServicesItem from './SubfieldServicesItem'
 import { QueryObserverResult } from '@tanstack/react-query'
 import { TDayOfServices } from '@/types'
