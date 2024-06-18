@@ -20,7 +20,7 @@ const sidebarNavItems = [
 	},
 	{
 		title: 'Notifications',
-		href: '#',
+		href: 'notifications',
 	},
 ]
 
@@ -40,7 +40,9 @@ const Setting = () => {
 					<SidebarNav items={sidebarNavItems} />
 				</aside>
 				<div className="flex-1 lg:max-w-2xl">
-					<Suspense fallback={<Icons.Loader size={32} />}>
+					<Suspense
+						fallback={<Icons.Loader size={32} className="container my-10" />}
+					>
 						<Outlet context={field} />
 					</Suspense>
 				</div>
