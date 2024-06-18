@@ -96,6 +96,7 @@ export type TBooking = {
 	description?: string
 	additionalServices?: unknown
 	user: TUser
+	review?: TReview
 }
 
 export type TReview = { rating: number; description: string }

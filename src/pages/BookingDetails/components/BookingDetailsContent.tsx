@@ -4,6 +4,16 @@ import { formatDate, format } from 'date-fns'
 import { formatPrice } from '@/utils/price'
 import { Textarea } from '@/components/ui/textarea'
 
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card'
+import UserItem from '@/components/UserItem'
+import Rating from '@/components/Rating'
+
 const BookingDetailsContent = (props: TBooking) => {
 	const {
 		_id,
@@ -16,6 +26,7 @@ const BookingDetailsContent = (props: TBooking) => {
 		createdAt,
 		user,
 		description,
+		review,
 	} = props
 
 	return (
@@ -59,6 +70,22 @@ const BookingDetailsContent = (props: TBooking) => {
 					readOnly
 				/>
 			</div>
+
+			{review && (
+				<Card>
+					<CardHeader>
+						<CardTitle>
+							<UserItem {...user} />
+						</CardTitle>
+						<CardDescription className="flex gap-1">
+							<Rating rating={review.rating} size={18} />
+						</CardDescription>
+					</CardHeader>
+					<CardContent>
+						<Textarea value={review.description} readOnly />
+					</CardContent>
+				</Card>
+			)}
 		</section>
 	)
 }

@@ -18,6 +18,10 @@ const Bookings = lazy(() => import('@/pages/Bookings'))
 const BookingDetails = lazy(() => import('@/pages/BookingDetails'))
 const SubFieldDetails = lazy(() => import('@/pages/SubFieldDetails'))
 const Reviews = lazy(() => import('@/pages/Reviews'))
+const Setting = lazy(() => import('@/pages/Setting'))
+const FieldDetails = lazy(() => import('@/pages/FieldDetails'))
+const FieldLocation = lazy(() => import('@/pages/FieldLocation'))
+const Account = lazy(() => import('@/pages/Account'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -37,6 +41,12 @@ const router = createBrowserRouter(
 						element={<SubFieldDetails />}
 					/>
 					<Route path={PATHS.REVIEWS} element={<Reviews />} />
+					<Route path={PATHS.SETTINGS} element={<Setting />}>
+						<Route index element={<FieldDetails />} />
+						<Route path="location" element={<FieldLocation />} />
+						<Route path="account" element={<Account />} />
+						<Route path="*" element={<NotFound />} />
+					</Route>
 				</Route>
 			</Route>
 		</Route>,

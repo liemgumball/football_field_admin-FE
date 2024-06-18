@@ -14,7 +14,7 @@ const UserItem = ({
 		<div className="flex items-center">
 			<Avatar className="h-9 w-9">
 				<AvatarImage src={avatar} alt="Avatar" />
-				<AvatarFallback className="font-semibold tracking-wide">
+				<AvatarFallback className="font-semibold tracking-normal">
 					{getAvatarFallback(name ? name : email)}
 				</AvatarFallback>
 			</Avatar>
