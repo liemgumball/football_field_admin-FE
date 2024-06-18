@@ -23,7 +23,7 @@ const SubFieldEditSheet = ({ subfield }: { subfield: TSubField }) => {
 					<PencilIcon size={16} />
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="top">
+			<SheetContent side="right">
 				<SheetHeader>
 					<SheetTitle className="text-2xl font-bold">Edit SubField</SheetTitle>
 					<SheetDescription className="text-base font-medium">
