@@ -13,6 +13,7 @@ import {
 import { Separator } from '@/components/ui/separator'
 import TurnOfServiceItem from './TurnOfServiceItem'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Link } from 'react-router-dom'
 
 type TProps = QueryObserverResult<TDayOfServices[]>
 
@@ -36,10 +37,12 @@ const SubfieldServicesItem = (props: TProps) => {
 		<Card className="space-y-2 overflow-hidden rounded-md border p-2">
 			<CardHeader className="flex flex-row justify-between">
 				<div>
-					<CardTitle>{subfield?.name || 'Subfield'}</CardTitle>
-					<CardDescription className="text-sm text-muted-foreground">
-						{format(date, 'PPP')}
-					</CardDescription>
+					<Link to={`/subfields/${subfield?._id}`}>
+						<CardTitle>{subfield?.name || 'Subfield'}</CardTitle>
+						<CardDescription className="text-sm text-muted-foreground">
+							{format(date, 'PPP')}
+						</CardDescription>
+					</Link>
 				</div>
 				<div className="flex items-center">
 					<User2Icon className="mr-1 text-primary" size={16} />{' '}

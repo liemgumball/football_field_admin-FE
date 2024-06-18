@@ -13,8 +13,15 @@ import { CheckIcon, MinusCircleIcon } from 'lucide-react'
 import useBookingMutation from '@/hooks/Bookings/useBookingMutation'
 import { toast } from '@/components/ui/use-toast'
 import { Icons } from '@/components/Icons'
+import { cn } from '@/lib/utils'
 
-const BookingResponse = ({ _id }: { _id: string }) => {
+const BookingResponse = ({
+	_id,
+	className,
+}: {
+	_id: string
+	className?: string
+}) => {
 	const { mutateAsync, isPending } = useBookingMutation(_id)
 
 	const onConfirm = async () => {
@@ -55,7 +62,7 @@ const BookingResponse = ({ _id }: { _id: string }) => {
 	}
 
 	return (
-		<div className="flex flex-col gap-2 p-2">
+		<div className={cn('flex flex-col gap-2 p-2', className)}>
 			<Dialog>
 				<DialogTrigger>
 					<Button size="sm" className="w-full">

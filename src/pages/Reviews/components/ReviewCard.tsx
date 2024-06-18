@@ -9,22 +9,25 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import UserItem from '@/components/UserItem'
 import { TBookingReview } from '@/types'
+import { Link } from 'react-router-dom'
 
-const ReviewCard = ({ review, user }: TBookingReview) => {
+const ReviewCard = ({ review, user, _id }: TBookingReview) => {
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>
-					<UserItem {...user} />
-				</CardTitle>
-				<CardDescription className="flex gap-1">
-					<Rating rating={review.rating} size={18} />
-				</CardDescription>
-			</CardHeader>
-			<CardContent>
-				<Textarea value={review.description} readOnly />
-			</CardContent>
-		</Card>
+		<Link to={`/bookings/${_id}`}>
+			<Card>
+				<CardHeader>
+					<CardTitle>
+						<UserItem {...user} />
+					</CardTitle>
+					<CardDescription className="flex gap-1">
+						<Rating rating={review.rating} size={18} />
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<Textarea value={review.description} readOnly />
+				</CardContent>
+			</Card>
+		</Link>
 	)
 }
 

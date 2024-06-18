@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Link } from 'react-router-dom'
 
-import BookingResponse from './BookingResponse'
+import BookingResponse from '@/components/BookingResponse'
 
 const ColumnActions = (props: TBooking) => {
 	const { _id, status } = props
