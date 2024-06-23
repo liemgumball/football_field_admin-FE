@@ -59,7 +59,7 @@ const FieldOverView = () => {
 						fallback={<Icons.Loader size={60} className="container my-16" />}
 					>
 						<TabsContent value="overview">
-							<OverviewTab {...field} />
+							<OverviewTab />
 						</TabsContent>
 						<TabsContent value="analytics"></TabsContent>
 					</Suspense>

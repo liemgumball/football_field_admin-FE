@@ -48,7 +48,7 @@ export const Icons = {
 			className={cn('animate-bounce-once text-primary', className)}
 		/>
 	),
-	Rating: ({ size, color }: { size?: number; color?: string }) => (
-		<StarIcon size={size} color={color} />
+	Rating: (props: { size?: number; color?: string; className?: string }) => (
+		<StarIcon {...props} />
 	),
 }
