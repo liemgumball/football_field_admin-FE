@@ -1,5 +1,11 @@
 import { timeValues } from '@/constants/time'
 
+export enum UserRole {
+	CUSTOMER = '2001',
+	ADMIN = '17601',
+	SUPER_USER = '19383',
+}
+
 export type TTimeStep = (typeof timeValues)[number] | string
 
 export type TSize = 5 | 6 | 7 | 11
@@ -11,8 +17,9 @@ export type TUser = {
 	email: string
 	name?: string
 	phoneNumber: string
-	role: string
+	role: UserRole
 	avatarFallback?: string
+	fieldId: string
 }
 
 export type TLocation = {
@@ -35,6 +42,8 @@ export type TSubField = {
 
 export type TFootballField = {
 	_id: string
+	adminId: string
+	admin?: TUser
 	name: string
 	rating: number | null
 	openedAt: string
