@@ -1,4 +1,5 @@
 import { Icons } from '@/components/Icons'
+import RatingItem from '@/components/RatingItem'
 import { Button } from '@/components/ui/button'
 import {
 	Tooltip,
@@ -28,9 +29,7 @@ const FootballFieldHeader = (props: TProps) => {
 		<section className="flex items-center justify-between gap-4">
 			<div>
 				<h2>{field.name} </h2>
-				<p className="text-xl text-muted-foreground">
-					Rating - {field.rating ? field.rating.toFixed(1) : 'No rating'}
-				</p>
+				<RatingItem rating={field.rating} />
 			</div>
 			<TooltipProvider>
 				<Tooltip>

@@ -1,24 +1,25 @@
-import { Input } from '@/components/ui/input'
-import useDebounce from '@/hooks/useDebounce'
-import { useState } from 'react'
-import FieldList from './components/FieldList'
+import { NavLink, Outlet } from 'react-router-dom'
 
 const SuperUserHome = () => {
-	const [search, setSearch] = useState('')
-
-	const debouncedSearch = useDebounce(search, 200)
-
 	return (
 		<div className="container mt-2 space-y-4">
-			<h1>All the Football Fields</h1>
-			<Input
-				type="text"
-				placeholder="Search name ..."
-				className="h-12 max-w-96"
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
-			<FieldList debouncedSearch={debouncedSearch.toLowerCase()} />
+			<header className="flex justify-end">
+				<nav className="flex flex-wrap items-center gap-x-4 gap-y-2 lg:gap-x-6">
+					<NavLink
+						to="/"
+						className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+					>
+						Football Fields
+					</NavLink>
+					<NavLink
+						to="/customers"
+						className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+					>
+						Customer
+					</NavLink>
+				</nav>
+			</header>
+			<Outlet />
 		</div>
 	)
 }

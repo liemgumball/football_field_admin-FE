@@ -38,7 +38,7 @@ const FieldList = ({ debouncedSearch }: { debouncedSearch: string }) => {
 	return (
 		<>
 			<p className="pl-4 text-sm text-muted-foreground">
-				Total {data?.length} fields
+				Total {fields.length} fields
 			</p>
 			<ul className="grid gap-2 xl:grid-cols-2">
 				{fields.map((field) => (

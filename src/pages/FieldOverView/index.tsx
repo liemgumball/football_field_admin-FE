@@ -1,7 +1,11 @@
 import { Icons } from '@/components/Icons'
+import RatingItem from '@/components/RatingItem'
 import { getFootballField } from '@/services/football-field'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Suspense } from 'react'
+import OverviewTab from './tabs/OverViewTab'
 
 const FieldOverView = () => {
 	const { fieldId } = useParams()
@@ -34,7 +38,35 @@ const FieldOverView = () => {
 			</p>
 		)
 
-	return <div>{JSON.stringify(field)}</div>
+	return (
+		<div className="mt-4 space-y-4">
+			<header className="space-y-2">
+				<h1>{field.name}</h1>
+				<RatingItem rating={field.rating} />
+				<Tabs defaultValue="overview" className="space-y-4">
+					<TabsList>
+						<TabsTrigger value="overview">Overview</TabsTrigger>
+						<TabsTrigger value="analytics">Analytics</TabsTrigger>
+						<TabsTrigger value="reports" disabled>
+							Reports
+						</TabsTrigger>
+						<TabsTrigger value="notifications" disabled>
+							Chats
+						</TabsTrigger>
+					</TabsList>
+
+					<Suspense
+						fallback={<Icons.Loader size={60} className="container my-16" />}
+					>
+						<TabsContent value="overview">
+							<OverviewTab {...field} />
+						</TabsContent>
+						<TabsContent value="analytics"></TabsContent>
+					</Suspense>
+				</Tabs>
+			</header>
+		</div>
+	)
 }
 
 export default FieldOverView
