@@ -8,8 +8,8 @@ const useFootballFieldQuery = () => {
 	if (!admin) throw new Error('Not authenticated')
 
 	return useQuery<TFootballField>({
-		queryKey: ['football-field', admin._id],
-		queryFn: () => getFootballField(admin._id),
+		queryKey: ['football-field', admin.fieldId],
+		queryFn: () => getFootballField(admin.fieldId),
 		staleTime: 10 * 1000,
 		refetchOnWindowFocus: true,
 	})

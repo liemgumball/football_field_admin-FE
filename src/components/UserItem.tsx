@@ -11,14 +11,14 @@ const UserItem = ({
 	avatar?: string
 }) => {
 	return (
-		<div className="flex items-center">
+		<div className="flex items-center gap-x-3">
 			<Avatar className="h-9 w-9">
 				<AvatarImage src={avatar} alt="Avatar" />
 				<AvatarFallback className="font-semibold tracking-normal">
 					{getAvatarFallback(name ? name : email)}
 				</AvatarFallback>
 			</Avatar>
-			<div className="ml-4 space-y-1">
+			<div className="space-y-1">
 				<p className="text-sm font-medium leading-none">
 					{name ? name : email}
 				</p>
