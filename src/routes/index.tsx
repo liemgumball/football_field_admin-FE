@@ -24,6 +24,7 @@ const FieldDetails = lazy(() => import('@/pages/FieldDetails'))
 const FieldLocation = lazy(() => import('@/pages/FieldLocation'))
 const Account = lazy(() => import('@/pages/Account'))
 const SuperUserHome = lazy(() => import('@/pages/SuperUserHome'))
+const Fields = lazy(() => import('@/pages/Fields'))
 const FieldOverView = lazy(() => import('@/pages/FieldOverView'))
 
 export const adminRouter = createBrowserRouter(
@@ -62,9 +63,9 @@ export const superUserRouter = createBrowserRouter(
 		<Route element={<Layout />}>
 			<Route path="*" element={<NotFound />} />
 			<Route element={<SuperUserRoute />}>
-				<Route path="/">
-					<Route index element={<SuperUserHome />} />
-					<Route path=":fieldId" element={<FieldOverView />} />
+				<Route path="/" element={<SuperUserHome />}>
+					<Route index element={<Fields />} />
+					<Route path="fields/:fieldId" element={<FieldOverView />} />
 				</Route>
 			</Route>
 		</Route>,

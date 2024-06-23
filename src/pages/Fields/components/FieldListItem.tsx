@@ -9,7 +9,7 @@ const FieldListItem = (props: TFootballField) => {
 	return (
 		<li className="group size-full">
 			<Link
-				to={`/${_id}`}
+				to={`fields/${_id}`}
 				className="flex size-full items-center justify-between gap-2 rounded-lg border p-4 hover:bg-accent hover:text-accent-foreground"
 			>
 				<div className="ml-4 space-y-1">

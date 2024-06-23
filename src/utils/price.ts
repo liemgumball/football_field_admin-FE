@@ -1,3 +1,3 @@
 export const formatPrice = (num: number) => {
-	return num.toLocaleString('en-US') + ',000' + ' VND'
+	return Math.round(num).toLocaleString('en-US') + ',000' + ' VND'
 }
