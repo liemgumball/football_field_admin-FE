@@ -54,6 +54,7 @@ export type TFootballField = {
 	subfieldIds: string[]
 	createdAt: string
 	updatedAt: string
+	isActive: boolean
 }
 
 export type TBookingStatus = 'confirmed' | 'canceled' | 'pending'

@@ -61,11 +61,36 @@ export const adminRouter = createBrowserRouter(
 export const superUserRouter = createBrowserRouter(
 	createRoutesFromElements(
 		<Route element={<Layout />}>
-			<Route path="*" element={<NotFound />} />
 			<Route element={<SuperUserRoute />}>
 				<Route path="/" element={<SuperUserHome />}>
 					<Route index element={<Fields />} />
+					<Route path="*" element={<NotFound />} />
 					<Route path="fields/:fieldId" element={<FieldOverView />} />
+				</Route>
+				<Route path="admin">
+					<Route path="fields">
+						<Route
+							path=":fieldId"
+							element={<Dashboard />}
+							errorElement={<RouteError />}
+						>
+							<Route index element={<Home />} />
+							<Route path="*" element={<NotFound />} />
+							<Route path="day-of-services" element={<DayOfServices />} />
+							<Route path="bookings">
+								<Route index element={<Bookings />} />
+								<Route path=":id" element={<BookingDetails />} />
+							</Route>
+							<Route path="subfields/:id" element={<SubFieldDetails />} />
+							<Route path="reviews" element={<Reviews />} />
+							<Route path="settings" element={<Setting />}>
+								<Route index element={<FieldDetails />} />
+								<Route path="location" element={<FieldLocation />} />
+								<Route path="account" element={<Account />} />
+								<Route path="*" element={<NotFound />} />
+							</Route>
+						</Route>
+					</Route>
 				</Route>
 			</Route>
 		</Route>,

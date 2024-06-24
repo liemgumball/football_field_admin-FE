@@ -30,7 +30,7 @@ const FieldList = ({ debouncedSearch }: { debouncedSearch: string }) => {
 
 	if (!fields?.length)
 		return (
-			<p className="text-base text-muted-foreground">
+			<p className="w-full pt-4 text-center text-base text-muted-foreground">
 				No football field found!
 			</p>
 		)

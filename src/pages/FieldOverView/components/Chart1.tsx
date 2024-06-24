@@ -1,7 +1,6 @@
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, Area } from 'recharts'
-import { revenues } from '@/mocks/revenue-data'
 
-const Chart1 = () => {
+const Chart1 = ({ revenues }: { revenues: unknown[] }) => {
 	return (
 		<ResponsiveContainer width="100%" minWidth={800} height={300}>
 			<AreaChart data={revenues}>
