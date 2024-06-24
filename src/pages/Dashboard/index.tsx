@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { Icons } from '@/components/Icons'
 import useFootballFieldQuery from '@/hooks/Dashboard/useFootballFieldQuery'
 import FootballFieldHeader from './components/FootballFieldHeader'
+import useDocumentTitle from '@/hooks/useDocumentTitle'
 
 export const Dashboard = () => {
 	const {
@@ -14,6 +15,8 @@ export const Dashboard = () => {
 		isStale,
 		isFetching,
 	} = useFootballFieldQuery()
+
+	useDocumentTitle(field?.name)
 
 	if (isLoading) return <Icons.Loader size={60} className="container my-16" />
 

@@ -16,11 +16,11 @@ import { Link } from 'react-router-dom'
 import Chart1 from '../components/Chart1'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import Chart2 from '../components/Chart2'
-import { analytic } from '@/mocks/analytic-data'
 import { formatPrice } from '@/utils/price'
 import Chart3 from '../components/Chart3'
+import { TAnalytic } from '@/mocks/analytic-data'
 
-const OverviewTab = () => {
+const OverviewTab = (props: TAnalytic) => {
 	return (
 		<div className="grid gap-4 md:grid-cols-6 lg:grid-cols-12">
 			<Card className="overflow-x-auto md:col-span-6 lg:col-span-12">
@@ -29,7 +29,7 @@ const OverviewTab = () => {
 				</CardHeader>
 				<CardContent>
 					<ScrollArea>
-						<Chart1 />
+						<Chart1 revenues={props.revenues} />
 						<ScrollBar orientation="horizontal" className="h-1.5" />
 					</ScrollArea>
 				</CardContent>
@@ -45,7 +45,7 @@ const OverviewTab = () => {
 				</CardHeader>
 				<CardContent>
 					<div className="text-2xl font-bold">
-						{formatPrice(analytic.total_revenue)}
+						{formatPrice(props.total_revenue)}
 					</div>
 					<p className="text-xs text-muted-foreground">
 						+20.1% from last month
@@ -62,9 +62,9 @@ const OverviewTab = () => {
 					</Button>
 				</CardHeader>
 				<CardContent>
-					<div className="text-2xl font-bold">{analytic.customers}</div>
+					<div className="text-2xl font-bold">{props.customers}</div>
 					<p className="text-xs text-muted-foreground">
-						{((analytic.customers - 300) / 100).toFixed(2)}% from last month
+						{((props.customers - 300) / 100).toFixed(2)}% from last month
 					</p>
 				</CardContent>
 			</Card>
@@ -78,9 +78,9 @@ const OverviewTab = () => {
 					</Button>
 				</CardHeader>
 				<CardContent>
-					<Chart2 filled={analytic.filled} />
+					<Chart2 filled={props.filled} />
 					<CardDescription>
-						{(analytic.filled - 75).toFixed(1)}% from last month
+						{(props.filled - 75).toFixed(1)}% from last month
 					</CardDescription>
 				</CardContent>
 			</Card>
@@ -94,9 +94,9 @@ const OverviewTab = () => {
 					</Button>
 				</CardHeader>
 				<CardContent>
-					<Chart3 rating={analytic.rating} />
+					<Chart3 rating={props.rating} />
 					<CardDescription>
-						{(analytic.rating - 3.5).toFixed(1)} from last month
+						{(props.rating - 3.5).toFixed(1)} from last month
 					</CardDescription>
 				</CardContent>
 			</Card>

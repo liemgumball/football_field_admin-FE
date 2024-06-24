@@ -1,4 +1,3 @@
-import { PATHS } from '@/constants/navigation'
 import { cn } from '@/lib/utils'
 import { NavLink } from 'react-router-dom'
 
@@ -15,31 +14,36 @@ export function MainNav({
 			{...props}
 		>
 			<NavLink
-				to={PATHS.DASHBOARD}
+				to=""
+				relative="path"
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Overview
 			</NavLink>
 			<NavLink
-				to={PATHS.DAY_OF_SERVICES}
+				to="day-of-services"
+				relative="path"
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Day of services
 			</NavLink>
 			<NavLink
-				to={PATHS.BOOKINGS}
+				to="bookings"
+				relative="path"
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Bookings
 			</NavLink>
 			<NavLink
-				to={PATHS.REVIEWS}
+				to="reviews"
+				relative="path"
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Reviews
 			</NavLink>
 			<NavLink
-				to={PATHS.SETTINGS}
+				to="settings"
+				relative="path"
 				className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 			>
 				Settings

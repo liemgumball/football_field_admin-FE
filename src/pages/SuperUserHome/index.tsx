@@ -15,7 +15,7 @@ const SuperUserHome = () => {
 						to="/customers"
 						className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 					>
-						Customer
+						Customers
 					</NavLink>
 				</nav>
 			</header>

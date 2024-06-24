@@ -10,7 +10,12 @@ const Reviews = () => {
 	if (isError)
 		return <p className="text-destructive">Fail to get reviews information</p>
 
-	if (!data) return <p className="text-muted-foreground">Reviews not found</p>
+	if (!data?.length)
+		return (
+			<p className="w-full text-center text-sm text-muted-foreground">
+				No reviews found!
+			</p>
+		)
 
 	return (
 		<main>
