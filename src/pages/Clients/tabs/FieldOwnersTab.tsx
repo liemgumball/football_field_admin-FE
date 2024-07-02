@@ -1,0 +1,52 @@
+import UserItem from '@/components/UserItem'
+import UserItemSkeleton from '@/components/UserItemSkeleton'
+import { getAdmins } from '@/services/clients'
+import { TUser } from '@/types'
+import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
+
+const FieldOwnersTab = ({ debouncedSearch }: { debouncedSearch: string }) => {
+	const { data, isLoading, isError, error } = useQuery<TUser[]>({
+		queryKey: ['admins'],
+		queryFn: getAdmins,
+	})
+
+	const owners = useMemo(
+		() => data?.filter((i) => (i.name || i.email).includes(debouncedSearch)),
+		[data, debouncedSearch],
+	)
+
+	if (isLoading)
+		return (
+			<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+				{Array(16)
+					.fill(null)
+					.map((_, i) => (
+						<UserItemSkeleton key={i} />
+					))}
+			</div>
+		)
+
+	if (isError) return <p className="text-destructive">{error.message}</p>
+
+	if (!owners)
+		return <p className="text-muted-foreground">No field owners found</p>
+
+	return (
+		<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+			{owners.map((i) => (
+				<Link to={i._id} relative="path">
+					<UserItem
+						nameRight
+						className="cursor-pointer justify-between rounded-md border p-3 hover:bg-muted/50"
+						{...i}
+						key={i._id}
+					/>
+				</Link>
+			))}
+		</div>
+	)
+}
+
+export default FieldOwnersTab

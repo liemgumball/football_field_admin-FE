@@ -8,7 +8,9 @@ const Layout = () => {
 		<div className="relative min-h-screen w-full">
 			<Header />
 			<main className="container flex flex-col items-center justify-center">
-				<Suspense fallback={<Icons.Loader size={60} />}>
+				<Suspense
+					fallback={<Icons.Loader size={60} className="container my-16" />}
+				>
 					<Outlet />
 				</Suspense>
 			</main>

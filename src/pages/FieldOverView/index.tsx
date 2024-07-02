@@ -5,7 +5,7 @@ import {
 	updateFootballField,
 } from '@/services/football-field'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Suspense, useMemo, useState } from 'react'
 import OverviewTab from './tabs/OverViewTab'
@@ -29,8 +29,10 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { toast } from '@/components/ui/use-toast'
+import ChatTab from './tabs/ChatTab'
 
 const FieldOverView = () => {
+	const { hash } = useLocation()
 	const [isOpen, setIsOpen] = useState(false)
 	const { fieldId } = useParams()
 
@@ -144,23 +146,23 @@ const FieldOverView = () => {
 				</div>
 			</header>
 
-			<Tabs defaultValue="overview" className="space-y-4">
+			<Tabs defaultValue={hash ? hash.slice(1) : ''} className="space-y-4">
 				<TabsList>
-					<TabsTrigger value="overview">Overview</TabsTrigger>
-					<TabsTrigger value="reviews">Reviews</TabsTrigger>
+					<TabsTrigger value="">Overview</TabsTrigger>
+					<TabsTrigger value="chats">Chats</TabsTrigger>
 					<TabsTrigger value="reports" disabled>
 						Reports
-					</TabsTrigger>
-					<TabsTrigger value="notifications" disabled>
-						Chats
 					</TabsTrigger>
 				</TabsList>
 
 				<Suspense
 					fallback={<Icons.Loader size={60} className="container my-16" />}
 				>
-					<TabsContent value="overview">
+					<TabsContent value="">
 						<OverviewTab {...analytic} />
+					</TabsContent>
+					<TabsContent value="chats">
+						<ChatTab />
 					</TabsContent>
 					<TabsContent value="analytics"></TabsContent>
 				</Suspense>

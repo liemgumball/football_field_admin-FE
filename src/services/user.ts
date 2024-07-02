@@ -20,7 +20,7 @@ export const signup = (data: {
 export const updateUser = (id: string, data: Partial<TUser>) =>
 	apiRequest(`users/${id}`, { method: 'PATCH', data, withCredentials: true })
 
-export const geTUser = (id: string) =>
+export const getUser = (id: string) =>
 	apiRequest(`users/${id}`, { withCredentials: true })
 
 export const verifyAccount = (token: string) =>
