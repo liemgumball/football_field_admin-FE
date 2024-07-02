@@ -10,7 +10,7 @@ const Fields = () => {
 
 	return (
 		<>
-			<div className="flex justify-between gap-4">
+			<div className="flex flex-wrap justify-between gap-4">
 				<h1>All the Football Fields</h1>
 				<Input
 					type="text"
