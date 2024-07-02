@@ -13,7 +13,7 @@ import { TUser } from '@/types'
 import { getAvatarFallback } from '@/utils/user'
 import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
-import { PhoneCallIcon, Trash2Icon } from 'lucide-react'
+import { MessageCircleIcon, PhoneCallIcon, Trash2Icon } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 
 const ClientDetails = () => {
@@ -50,7 +50,8 @@ const ClientDetails = () => {
 
 	return (
 		<main className="grid grid-cols-12 gap-6">
-			<header className="col-span-12 flex items-center gap-4 md:col-span-9">
+			{/* <ScrollArea className="w-full"> */}
+			<header className="col-span-12 flex items-center gap-4 overflow-x-scroll pb-2 md:col-span-9">
 				<Avatar className="size-16 border">
 					<AvatarImage src={avatarFallback} alt="Avatar" />
 					<AvatarFallback className="font-semibold tracking-normal">
@@ -59,6 +60,8 @@ const ClientDetails = () => {
 				</Avatar>
 				<h2>{email}</h2>
 			</header>
+			{/* <ScrollBar orientation="horizontal" />
+			</ScrollArea> */}
 
 			<section className="container col-span-12 grid gap-4 justify-self-center md:grid-cols-2 md:justify-self-start">
 				<p className="text-xl font-bold">
@@ -120,13 +123,23 @@ const ClientDetails = () => {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger asChild>
+							<Button asChild size="icon" className="w-full">
+								<Link to="chat">
+									<MessageCircleIcon size={20} />
+								</Link>
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>Chat to this client.</TooltipContent>
+					</Tooltip>
+					<Tooltip>
+						<TooltipTrigger asChild>
 							<Button
 								asChild
 								size="icon"
 								variant="secondary"
 								className="w-full"
 							>
-								<Link to={`phone:${phoneNumber}`}>
+								<Link to={`tel:${phoneNumber}`}>
 									<PhoneCallIcon size={20} />
 								</Link>
 							</Button>
