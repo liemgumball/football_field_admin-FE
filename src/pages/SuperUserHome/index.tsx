@@ -12,10 +12,10 @@ const SuperUserHome = () => {
 						Football Fields
 					</NavLink>
 					<NavLink
-						to="/customers"
+						to="/clients"
 						className="text-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 					>
-						Customers
+						Clients
 					</NavLink>
 				</nav>
 			</header>

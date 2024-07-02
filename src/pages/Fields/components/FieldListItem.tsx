@@ -21,7 +21,7 @@ const FieldListItem = (props: TFootballField) => {
 
 				{admin && (
 					<Link
-						to={`/admins/${admin._id}`}
+						to={`/clients/${admin._id}`}
 						className="rounded-lg p-2 hover:!bg-primary/20 group-hover:bg-primary/5"
 					>
 						<UserItem {...admin} />
