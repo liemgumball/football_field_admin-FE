@@ -13,7 +13,10 @@ const CustomersTab = ({ debouncedSearch }: { debouncedSearch: string }) => {
 	})
 
 	const customers = useMemo(
-		() => data?.filter((i) => (i.name || i.email).includes(debouncedSearch)),
+		() =>
+			data?.filter((i) =>
+				(i.name || i.email).toLowerCase().includes(debouncedSearch),
+			),
 		[data, debouncedSearch],
 	)
 

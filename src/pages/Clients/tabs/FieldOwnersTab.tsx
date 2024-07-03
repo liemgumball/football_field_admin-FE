@@ -13,7 +13,10 @@ const FieldOwnersTab = ({ debouncedSearch }: { debouncedSearch: string }) => {
 	})
 
 	const owners = useMemo(
-		() => data?.filter((i) => (i.name || i.email).includes(debouncedSearch)),
+		() =>
+			data?.filter((i) =>
+				(i.name || i.email).toLowerCase().includes(debouncedSearch),
+			),
 		[data, debouncedSearch],
 	)
 

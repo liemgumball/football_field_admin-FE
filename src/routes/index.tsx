@@ -10,6 +10,7 @@ import AdminRoute from './AdminRoute'
 import RouteError from './RouteError'
 import Dashboard from '@/pages/Dashboard'
 import SuperUserRoute from './SuperUserRoute'
+import SuperUserHome from '@/pages/SuperUserHome'
 
 const Login = lazy(() => import('@/pages/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
@@ -23,11 +24,13 @@ const Setting = lazy(() => import('@/pages/Setting'))
 const FieldDetails = lazy(() => import('@/pages/FieldDetails'))
 const FieldLocation = lazy(() => import('@/pages/FieldLocation'))
 const Account = lazy(() => import('@/pages/Account'))
-const SuperUserHome = lazy(() => import('@/pages/SuperUserHome'))
+// const SuperUserHome = lazy(() => import('@/pages/SuperUserHome'))
 const Fields = lazy(() => import('@/pages/Fields'))
 const FieldOverView = lazy(() => import('@/pages/FieldOverView'))
 const Clients = lazy(() => import('@/pages/Clients'))
 const ClientDetails = lazy(() => import('@/pages/ClientDetails'))
+const ClientContent = lazy(() => import('@/pages/ClientContent'))
+const Chat = lazy(() => import('@/pages/Chat'))
 
 export const adminRouter = createBrowserRouter(
 	createRoutesFromElements(
@@ -70,7 +73,10 @@ export const superUserRouter = createBrowserRouter(
 					<Route path="fields/:fieldId" element={<FieldOverView />} />
 					<Route path="clients">
 						<Route index element={<Clients />} />
-						<Route path=":id" element={<ClientDetails />} />
+						<Route path=":id" element={<ClientDetails />}>
+							<Route index element={<ClientContent />} />
+							<Route path="chat" element={<Chat />} />
+						</Route>
 					</Route>
 				</Route>
 				<Route path="admin">
