@@ -16,8 +16,12 @@ import {
 import { Link } from 'react-router-dom'
 import Overview from '../components/Overview'
 import RecentSales from '../components/RecentSales'
+import { TAnalytic } from '@/mocks/analytic-data'
+import { formatPrice } from '@/utils/price'
 
-const OverviewTab = () => {
+const OverviewTab = (props: TAnalytic) => {
+	const { total_revenue, customers, filled, activities } = props
+
 	return (
 		<div className="space-y-2">
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -31,7 +35,9 @@ const OverviewTab = () => {
 						</Button>
 					</CardHeader>
 					<CardContent>
-						<div className="text-2xl font-bold">450,350,000 VND</div>
+						<div className="text-2xl font-bold">
+							{formatPrice(total_revenue)}
+						</div>
 						<p className="text-xs text-muted-foreground">
 							+20.1% from last month
 						</p>
@@ -49,7 +55,7 @@ const OverviewTab = () => {
 					<CardContent>
 						<div className="text-2xl font-bold">+150</div>
 						<p className="text-xs text-muted-foreground">
-							+180.1% from last month
+							{((customers - 300) / 100).toFixed(2)}% from last month
 						</p>
 					</CardContent>
 				</Card>
@@ -65,7 +71,7 @@ const OverviewTab = () => {
 					<CardContent>
 						<div className="text-2xl font-bold">92%</div>
 						<p className="text-xs text-muted-foreground">
-							+19% from last month
+							{(filled - 75).toFixed(1)}% from last month
 						</p>
 					</CardContent>
 				</Card>
@@ -79,9 +85,9 @@ const OverviewTab = () => {
 						</Button>
 					</CardHeader>
 					<CardContent>
-						<div className="text-2xl font-bold">+573</div>
+						<div className="text-2xl font-bold">{activities}</div>
 						<p className="text-xs text-muted-foreground">
-							+201 since last hour
+							+{60 - activities} since last hour
 						</p>
 					</CardContent>
 				</Card>

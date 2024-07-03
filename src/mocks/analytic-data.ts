@@ -68,6 +68,7 @@ export const getAnalytic = () => ({
 	 * From 100 to 600.
 	 */
 	customers: Math.floor(Math.random() * 500) + 100,
+	activities: Math.floor(Math.random() * 50) + 10,
 })
 
 const example = getAnalytic()

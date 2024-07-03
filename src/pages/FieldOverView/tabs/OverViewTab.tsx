@@ -20,7 +20,7 @@ import { formatPrice } from '@/utils/price'
 import Chart3 from '../components/Chart3'
 import { TAnalytic } from '@/mocks/analytic-data'
 
-const OverviewTab = (props: TAnalytic) => {
+const OverviewTab = (props: Omit<TAnalytic, 'activities'>) => {
 	return (
 		<div className="grid gap-4 md:grid-cols-6 lg:grid-cols-12">
 			<Card className="overflow-x-auto md:col-span-6 lg:col-span-12">
