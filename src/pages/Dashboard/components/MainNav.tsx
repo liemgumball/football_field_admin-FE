@@ -8,7 +8,7 @@ export function MainNav({
 	return (
 		<nav
 			className={cn(
-				'flex flex-wrap items-center gap-x-4 gap-y-2 lg:gap-x-6',
+				'mb-2 flex flex-wrap items-center gap-x-4 gap-y-2 lg:gap-x-6',
 				className,
 			)}
 			{...props}
