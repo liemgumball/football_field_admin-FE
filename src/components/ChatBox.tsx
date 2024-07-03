@@ -85,7 +85,7 @@ const ChatBox = (props: { receiverId: string }) => {
 							</div>
 						</>
 					)}
-					{messages?.length ? (
+					{messages?.length && !isLoading ? (
 						messages.map((message) => (
 							<Message {...message} key={message._id} />
 						))
