@@ -29,7 +29,7 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { toast } from '@/components/ui/use-toast'
-import ChatTab from './tabs/ChatTab'
+import ChatBox from '@/components/ChatBox'
 
 const FieldOverView = () => {
 	const { hash } = useLocation()
@@ -162,7 +162,7 @@ const FieldOverView = () => {
 						<OverviewTab {...analytic} />
 					</TabsContent>
 					<TabsContent value="chats">
-						<ChatTab />
+						<ChatBox receiverId={field.adminId} />
 					</TabsContent>
 					<TabsContent value="analytics"></TabsContent>
 				</Suspense>

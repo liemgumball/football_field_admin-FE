@@ -9,7 +9,7 @@ import CustomersTab from './tabs/CustomersTab'
 
 const Clients = () => {
 	const [search, setSearch] = useState('')
-	const debouncedSearch = useDebounce(search)
+	const debouncedSearch = useDebounce(search, 200)
 
 	return (
 		<>
@@ -17,7 +17,7 @@ const Clients = () => {
 				<h1>Clients</h1>
 				<Input
 					type="text"
-					className="h-11 max-w-sm"
+					className="h-12 max-w-sm"
 					placeholder="Search name ..."
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}

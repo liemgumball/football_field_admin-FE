@@ -118,3 +118,11 @@ export type TBookingReview = {
 	user: TUser
 	_id: string
 }
+
+export type TMessage = {
+	_id: string
+	senderId: string
+	receiverId: string
+	message: string
+	createdAt: Date | string
+}
