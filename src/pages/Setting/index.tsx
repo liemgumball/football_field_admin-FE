@@ -18,10 +18,6 @@ const sidebarNavItems = [
 		title: 'Account',
 		href: 'account',
 	},
-	{
-		title: 'Notifications',
-		href: 'notifications',
-	},
 ]
 
 const Setting = () => {
