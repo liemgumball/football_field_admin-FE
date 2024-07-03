@@ -68,7 +68,7 @@ const ChatBox = (props: { receiverId: string }) => {
 					className="mb-4 max-h-[500px] min-h-[300px] overflow-y-auto pr-4"
 					ref={scrollAreaRef}
 				>
-					{isLoading && (
+					{isLoading ? (
 						// Skeleton Loading
 						<>
 							<div className="mb-2 flex items-center justify-end gap-2">
@@ -84,8 +84,7 @@ const ChatBox = (props: { receiverId: string }) => {
 								<Skeleton className="h-11 w-64 break-words rounded-md" />
 							</div>
 						</>
-					)}
-					{messages?.length && !isLoading ? (
+					) : messages?.length ? (
 						messages.map((message) => (
 							<Message {...message} key={message._id} />
 						))
